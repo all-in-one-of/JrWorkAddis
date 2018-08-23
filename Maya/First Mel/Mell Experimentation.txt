@@ -1,8 +1,13 @@
+//Create Poly Cillyndar Trunk
 polyCylinder -r 1 -h 2 -sx 20 -sy 1 -sz 1 -ax 0 1 0 -rcp 0 -cuv 3 -ch 1;
 move -rpr -y 1 ; 
 select -r pCylinder1.vtx[20:39] pCylinder1.vtx[41] ;
 move -y 5 ;
 select -r pCylinder1.vtx[0:41] ;
+delete `polyMoveVertex -ch 1 |pCylinder1|pCylinderShape1.vtx[0]`; polySplit -ch 1 -sma 180 -ep 40 0.667164 -ep 41 0.667164 -ep 42 0.667164 -ep 43 0.667164 -ep 44 0.667164 -ep 45 0.667164 -ep 46 0.667164 -ep 47 0.667164 -ep 48 0.667164 -ep 49 0.667164 -ep 50 0.667164 -ep 51 0.667164 -ep 52 0.667164 -ep 53 0.667164 -ep 54 0.667164 -ep 55 0.667164 -ep 56 0.667164 -ep 57 0.667164 -ep 58 0.667164 -ep 59 0.667164 -ep 40 0.667164 |pCylinder1|pCylinderShape1;  select -cl;
+delete `polyMoveVertex -ch 1 |pCylinder1|pCylinderShape1.vtx[0]`; polySplit -ch 1 -sma 180 -ep 40 0.492494 -ep 41 0.492494 -ep 42 0.492494 -ep 43 0.492494 -ep 44 0.492494 -ep 45 0.492494 -ep 46 0.492494 -ep 47 0.492494 -ep 48 0.492494 -ep 49 0.492494 -ep 50 0.492494 -ep 51 0.492494 -ep 52 0.492494 -ep 53 0.492494 -ep 54 0.492494 -ep 55 0.492494 -ep 56 0.492494 -ep 57 0.492494 -ep 58 0.492494 -ep 59 0.492494 -ep 40 0.492494 |pCylinder1|pCylinderShape1;  select -cl;
+
+
 polyCone -r 4 -h 4 -sx 20 -sy 1 -sz 0 -ax 0 1 0 -rcp 0 -cuv 3 -ch 1;
 move -r 0 5;
 select -r pCone1.f[0] ;
@@ -38,7 +43,6 @@ select -tgl pCone1.f[30] ;
 select -tgl pCone1.f[31] ;
 select -tgl pCone1.f[16] ;
 doDelete;
-
 
 select -r pCone1.f[34] ;
 polyCut -ch 1 -pc -4.99277118 3.98979204 1000.00000000 -ro 90.00000000 -90.00000000 0.00000000 pCone1.f[0:19];
@@ -78,6 +82,12 @@ scale -r -p -7.13713e-007cm 4.864451cm 4.82091e-007cm 0.753938 0.753938 0.753938
 select -r pCone2.vtx[0:153] ;
 move -r 0 0.194981 0 ;
 
+//Move Middle vertext down bottom branches
+select -r pCone1.vtx[17] ;
+move -r 0 -3.802551 0 ;
+//Move Middle vertext down top branches
+select -r pCone2.vtx[17] ;
+move -r 0 -2.455771 0 ;
 
 
 select -cl  ;
