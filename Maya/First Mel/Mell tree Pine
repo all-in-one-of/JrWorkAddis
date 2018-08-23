@@ -69,7 +69,6 @@ scale -r -p -4.76837e-007cm 3.038991cm -7.15256e-007cm 1.074658 1.074658 1.07465
 move -r 0 -0.0974904 0 ;
 
 select -r pCone1 ;
-select -r pCone1.f[0:67] ;
 polyExtrudeFacet -constructionHistory 1 -keepFacesTogether 1 -pvx -4.768371582e-007 -pvy 4.944833875 -pvz -7.152557373e-007 -divisions 1 -twist 0 -taper 1 -off 0 -thickness 0 -smoothingAngle 30 pCone1.f[0:67];
 scale -r -p 0.000390291cm 5.156907cm 0.00436831cm 0.912681 0.912681 0.912681 ;
 move -r 0 0.0595807 0 ;
@@ -81,34 +80,8 @@ select -r pCone1.vtx[17] ;
 move -r 0 -3.802551 0 ;
 
 //Select and extrude more branches
-select -r pCone1.f[64] ;
-select -tgl pCone1.f[26] ;
-select -tgl pCone1.f[62] ;
-select -tgl pCone1.f[28] ;
-select -tgl pCone1.f[60] ;
-select -tgl pCone1.f[30] ;
-select -tgl pCone1.f[58] ;
-select -tgl pCone1.f[32] ;
-select -tgl pCone1.f[56] pCone1.f[102] pCone1.f[124] ;
-select -tgl pCone1.f[34] ;
-select -tgl pCone1.f[54] ;
-select -tgl pCone1.f[39] ;
-select -tgl pCone1.f[17] ;
-select -tgl pCone1.f[37] ;
-select -tgl pCone1.f[0] ;
-select -tgl pCone1.f[20] ;
-select -tgl pCone1.f[2] ;
-select -tgl pCone1.f[22] ;
-select -tgl pCone1.f[66] ;
-select -tgl pCone1.f[24] ;
-select -tgl pCone1.f[12] ;
-select -tgl pCone1.f[49] ;
-select -tgl pCone1.f[4] ;
-select -tgl pCone1.f[48] ;
-select -tgl pCone1.f[19] ;
-select -tgl pCone1.f[50] ;
 
-polyExtrudeFacet -constructionHistory 1 -keepFacesTogether 1 -pvx 0.1109969616 -pvy 5.181670308 -pvz -0.05843925476 -divisions 1 -twist 0 -taper 1 -off 0 -thickness .2 -smoothingAngle 30 pCone1.f[0] pCone1.f[2] pCone1.f[4] pCone1.f[12] pCone1.f[17] pCone1.f[19:20] pCone1.f[22] pCone1.f[24] pCone1.f[26] pCone1.f[28] pCone1.f[30] pCone1.f[32] pCone1.f[34] pCone1.f[37] pCone1.f[39] pCone1.f[48:50] pCone1.f[54] pCone1.f[56] pCone1.f[58] pCone1.f[60] pCone1.f[62] pCone1.f[64] pCone1.f[66] pCone1.f[102] pCone1.f[124];
+polyExtrudeFacet -constructionHistory 1 -keepFacesTogether 1 -pvx 0.1109969616 -pvy 5.181670308 -pvz -0.05843925476 -divisions 1 -twist 0 -taper 1 -off 0 -thickness .2 -smoothingAngle 30 pCone1.f[0] pCone1.f[2] pCone1.f[4] pCone1.f[12] pCone1.f[17] pCone1.f[19:20] pCone1.f[22] pCone1.f[24] pCone1.f[26] pCone1.f[28] pCone1.f[30] pCone1.f[32] pCone1.f[34] pCone1.f[37] pCone1.f[39] pCone1.f[48:50] pCone1.f[54] pCone1.f[56] pCone1.f[58] pCone1.f[60] pCone1.f[62] pCone1.f[64] pCone1.f[66];
 
 //Weld top vertices to the tip
 select -r pCone1.vtx[158] pCone1.vtx[163] pCone1.vtx[170] pCone1.vtx[179] pCone1.vtx[186] pCone1.vtx[193] pCone1.vtx[196] pCone1.vtx[201] pCone1.vtx[206] pCone1.vtx[213] ;
@@ -121,13 +94,13 @@ select -r pCone1 ;
 duplicate -rr;
 move -r 0 1.210351 0 ;
 rotate -r -os -fo 0 85.245443 0 ;
-select -cl  ;
 select -r pCone2 ;
-select -r pCone2.vtx[0:16] pCone2.vtx[18:118] pCone2.vtx[120:153] ;
+select -r pCone2.vtx[0:118] pCone2.vtx[120:205] ;
 scale -r -p -7.13713e-007cm 4.864451cm 4.82091e-007cm 0.753938 0.753938 0.753938 ;
-select -r pCone2.vtx[0:153] ;
+select -r pCone2.vtx[0:118] pCone2.vtx[120:205] ;
 move -r 0 0.194981 0 ;
 
+rename "pCylinder1" "Trunk" ;
 
 
 
