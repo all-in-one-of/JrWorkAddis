@@ -1,0 +1,83 @@
+polyCylinder -r 1 -h 2 -sx 20 -sy 1 -sz 1 -ax 0 1 0 -rcp 0 -cuv 3 -ch 1;
+move -rpr -y 1 ; 
+select -r pCylinder1.vtx[20:39] pCylinder1.vtx[41] ;
+move -y 5 ;
+select -r pCylinder1.vtx[0:41] ;
+polyCone -r 4 -h 4 -sx 20 -sy 1 -sz 0 -ax 0 1 0 -rcp 0 -cuv 3 -ch 1;
+move -r 0 5;
+select -r pCone1.f[0] ;
+doDelete;
+select -r pCone1 ;
+delete `polyMoveVertex -ch 1 |pCone1.vtx[0]`; polySplit -ch 1 -sma 180 -ep 37 0 -ep 38 0.0232167 |pCone1;  select -cl ;
+delete `polyMoveVertex -ch 1 |pCone1.vtx[0]`; polySplit -ch 1 -sma 180 -ep 40 0.0405149 -ep 39 0.0297283 |pCone1;  select -cl;
+delete `polyMoveVertex -ch 1 |pCone1.vtx[0]`; polySplit -ch 1 -sma 180 -ep 20 0.0471683 -ep 21 0.0559655 |pCone1;  select -cl;
+delete `polyMoveVertex -ch 1 |pCone1.vtx[0]`; polySplit -ch 1 -sma 180 -ep 22 0 -ep 23 0.0264934 |pCone1;  select -cl;
+delete `polyMoveVertex -ch 1 |pCone1.vtx[0]`; polySplit -ch 1 -sma 180 -ep 48 0.0307571 -ep 3 1 |pCone1;  select -cl;
+delete `polyMoveVertex -ch 1 |pCone1.vtx[0]`; polySplit -ch 1 -sma 180 -ep 25 0.0298132 -ep 26 0.0362709 |pCone1;  select -cl;
+delete `polyMoveVertex -ch 1 |pCone1.vtx[0]`; polySplit -ch 1 -sma 180 -ep 27 0.0372595 -ep 7 1 -ep 28 0 -ep 29 0.0432226 |pCone1;  select -cl;
+delete `polyMoveVertex -ch 1 |pCone1.vtx[0]`; polySplit -ch 1 -sma 180 -ep 30 0.0327561 -ep 10 1 |pCone1;  select -cl;
+delete `polyMoveVertex -ch 1 |pCone1.vtx[0]`; polySplit -ch 1 -sma 180 -ep 31 0.0442764 -ep 32 0.0416725 |pCone1;  select -cl;
+delete `polyMoveVertex -ch 1 |pCone1.vtx[0]`; polySplit -ch 1 -sma 180 -ep 33 0.0271875 -ep 13 1 -ep 34 0 -ep 35 0.0385969 |pCone1;  select -cl;
+delete `polyMoveVertex -ch 1 |pCone1.vtx[0]`; polySplit -ch 1 -sma 180 -ep 16 1 -ep 36 0.0325925 |pCone1;  select -cl;
+delete `polyMoveVertex -ch 1 |pCone1.vtx[0]`; polySplit -ch 1 -sma 180 -ep 21 0.339559 -ep 22 0.0281159 |pCone1;  select -cl;
+delete `polyMoveVertex -ch 1 |pCone1.vtx[0]`; polySplit -ch 1 -sma 180 -ep 16 1 -ep 36 0.0325925 |pCone1;  select -cl;
+
+select -r pCone1.f[34] ;
+select -tgl pCone1.f[20] ;
+select -tgl pCone1.f[21] ;
+select -tgl pCone1.f[22] ;
+select -tgl pCone1.f[33] ;
+select -tgl pCone1.f[23] ;
+select -tgl pCone1.f[24] ;
+select -tgl pCone1.f[25] ;
+select -tgl pCone1.f[26] ;
+select -tgl pCone1.f[27] ;
+select -tgl pCone1.f[28] ;
+select -tgl pCone1.f[29] ;
+select -tgl pCone1.f[30] ;
+select -tgl pCone1.f[31] ;
+select -tgl pCone1.f[16] ;
+doDelete;
+
+
+select -r pCone1.f[34] ;
+polyCut -ch 1 -pc -4.99277118 3.98979204 1000.00000000 -ro 90.00000000 -90.00000000 0.00000000 pCone1.f[0:19];
+delete `polyMoveVertex -ch 1 |pCone1.vtx[0]`; polySplit -ch 1 -sma 180 -ep 36 0 -ep 11 1 |pCone1;  select -cl;
+delete `polyMoveVertex -ch 1 |pCone1.vtx[0]`; polySplit -ch 1 -sma 180 -ep 39 0 -ep 14 1 |pCone1;  select -cl;
+delete `polyMoveVertex -ch 1 |pCone1.vtx[0]`; polySplit -ch 1 -sma 180 -ep 39 0 -ep 14 1 |pCone1;  select -cl;
+delete `polyMoveVertex -ch 1 |pCone1.vtx[0]`; polySplit -ch 1 -sma 180 -ep 48 0 -ep 56 1 |pCone1;  select -cl;
+delete `polyMoveVertex -ch 1 |pCone1.vtx[0]`; polySplit -ch 1 -sma 180 -ep 26 0 -ep 6 1 |pCone1;  select -cl;
+delete `polyMoveVertex -ch 1 |pCone1.vtx[0]`; polySplit -ch 1 -sma 180 -ep 54 0 -ep 31 1 |pCone1;  select -cl;
+delete `polyMoveVertex -ch 1 |pCone1.vtx[0]`; polySplit -ch 1 -sma 180 -ep 29 0 -ep 54 0.315332 -ep 33 0.262512 -ep 8 0.34301 -ep 9 1 |pCone1;  select -cl;
+delete `polyMoveVertex -ch 1 |pCone1.vtx[0]`; polySplit -ch 1 -sma 180 -ep 45 0 -ep 17 1 |pCone1;  select -cl;
+delete `polyMoveVertex -ch 1 |pCone1.vtx[0]`; polySplit -ch 1 -sma 180 -ep 15 1 -ep 42 0.178237 -ep 39 0.117773 -ep 12 0 |pCone1;  select -cl;
+delete `polyMoveVertex -ch 1 |pCone1.vtx[0]`; polySplit -ch 1 -sma 180 -ep 23 1 -ep 21 0.360824 -ep 51 0.292894 -ep 48 0.31185 -ep 18 0.30225 -ep 47 0.326316 -ep 45 0.245509 -ep 44 0.369085 -ep 110 0.229433 -ep 111 0.208698 -ep 12 0.247394 -ep 38 0.260721 -ep 36 0.239724 -ep 35 0.407177 -ep 104 0.193879 -ep 103 0 |pCone1;  select -cl;
+
+select -r pCone1.vtx[0:16] pCone1.vtx[18:37] pCone1.vtx[58:76] ;
+scale -r -p -4.76837e-007cm 3.238528cm -7.15256e-007cm 1.038742 1.038742 1.038742 ;
+select -r pCone1.vtx[0:16] pCone1.vtx[18] pCone1.vtx[35] pCone1.vtx[37] ;
+scale -r -p -4.76837e-007cm 3.038991cm -7.15256e-007cm 1.074658 1.074658 1.074658 ;
+move -r 0 -0.0974904 0 ;
+
+select -r pCone1 ;
+select -r pCone1.f[0:67] ;
+polyExtrudeFacet -constructionHistory 1 -keepFacesTogether 1 -pvx -4.768371582e-007 -pvy 4.944833875 -pvz -7.152557373e-007 -divisions 1 -twist 0 -taper 1 -off 0 -thickness 0 -smoothingAngle 30 pCone1.f[0:67];
+scale -r -p 0.000390291cm 5.156907cm 0.00436831cm 0.912681 0.912681 0.912681 ;
+move -r 0 0.0595807 0 ;
+move -r 0 0.267248 0 ;
+rotate -r -p 3.3617e-005cm 5.290181cm 0.000380993cm -os -fo 0 3.706107 0 ;
+
+select -r pCone1 ;
+duplicate -rr;
+move -r 0 1.210351 0 ;
+rotate -r -os -fo 0 85.245443 0 ;
+select -cl  ;
+select -r pCone2 ;
+select -r pCone2.vtx[0:16] pCone2.vtx[18:118] pCone2.vtx[120:153] ;
+scale -r -p -7.13713e-007cm 4.864451cm 4.82091e-007cm 0.753938 0.753938 0.753938 ;
+select -r pCone2.vtx[0:153] ;
+move -r 0 0.194981 0 ;
+
+
+
+select -cl  ;
