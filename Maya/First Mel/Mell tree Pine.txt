@@ -100,6 +100,13 @@ scale -r -p -7.13713e-007cm 4.864451cm 4.82091e-007cm 0.753938 0.753938 0.753938
 select -r pCone2.vtx[0:118] pCone2.vtx[120:205] ;
 move -r 0 0.194981 0 ;
 
+//Duplicate scale and rotate next branchez
+select -r pCone2 ;
+duplicate -rr;
+move -r 0 0.823006 0 ;
+rotate -r -os -fo 0 102.903414 0 ;
+scale -r 0.789683 0.789683 0.789683 ;
+
 rename "pCylinder1" "Trunk" ;
 
 
