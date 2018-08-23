@@ -1,6 +1,6 @@
 //Maya ASCII 2018 scene
 //Name: Rover1.ma
-//Last modified: Thu, Aug 23, 2018 01:38:11 PM
+//Last modified: Thu, Aug 23, 2018 03:34:54 PM
 //Codeset: 1252
 requires maya "2018";
 currentUnit -l centimeter -a degree -t film;
@@ -34661,14 +34661,14 @@ createNode transform -n "Deformers" -p "|Rover";
 	rename -uid "E7776BBD-42DF-0E34-AE21-3CA339F4C6D4";
 createNode transform -n "persp1";
 	rename -uid "1054962C-4425-1B50-DA32-218940556B0D";
-	setAttr ".t" -type "double3" -404.2090602029204 148.13866176278 46.458299562282477 ;
-	setAttr ".r" -type "double3" -20.138352573877778 1715.7999999997867 1.573654868742257e-14 ;
+	setAttr ".t" -type "double3" -5.8830326665402595 165.09652787225872 330.19670637711101 ;
+	setAttr ".r" -type "double3" -27.338352573316648 1797.8000000000322 3.9786259317118519e-16 ;
 createNode camera -n "persp1Shape" -p "persp1";
 	rename -uid "90027A55-4323-476B-04BF-B199CC3ED222";
 	setAttr -k off ".v";
 	setAttr ".fl" 34.999999999999993;
 	setAttr ".ncp" 1;
-	setAttr ".coi" 439.83288072960892;
+	setAttr ".coi" 366.66140167485133;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
