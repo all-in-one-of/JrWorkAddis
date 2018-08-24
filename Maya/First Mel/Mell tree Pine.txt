@@ -75,6 +75,7 @@ move -r 0 0.0595807 0 ;
 move -r 0 0.267248 0 ;
 rotate -r -p 3.3617e-005cm 5.290181cm 0.000380993cm -os -fo 0 3.706107 0 ;
 
+
 //Move Middle vertext down bottom branches
 select -r pCone1.vtx[17] ;
 move -r 0 -3.802551 0 ;
@@ -107,8 +108,31 @@ move -r 0 0.823006 0 ;
 rotate -r -os -fo 0 102.903414 0 ;
 scale -r 0.789683 0.789683 0.789683 ;
 
+//Duplicate scale and rotate next branchez
+select -r pCone3 ;
+duplicate -rr;
+move -r 0 0.704268 0 ;
+rotate -r -os -fo 0 99.772619 0 ;
+scale -r 0.846398 0.846398 0.846398 ;
+
+select -r pCone4 ;
+duplicate -rr;
+// Undo: move -r 0 0.769633 0  // 
+move -r 0 0.492836 0 ;
+rotate -r -os -fo 0 89.326188 0 ;
+scale -r 0.810452 0.810452 0.810452 ;
+
 rename "pCylinder1" "Trunk" ;
+select -r Trunk.vtx[3:5] Trunk.vtx[13:15] Trunk.vtx[40] ;
+select -tgl Trunk.vtx[0] Trunk.vtx[8:10] Trunk.vtx[18:19] Trunk.vtx[40] ;
+scale -r -p -1.19209e-007cm 1.19209e-007cm -2.38419e-007cm 0.660569 0.660569 0.660569 ;
 
+select -r Trunk.vtx[62] Trunk.vtx[70:72] Trunk.vtx[80:81] ;
+select -tgl Trunk.vtx[65:67] Trunk.vtx[75:77] ;
+scale -r -p -1.19209e-007cm 1.642872cm -2.38419e-007cm 0.37373 0.37373 0.37373 ;
 
+select -r Trunk.vtx[23:26] Trunk.vtx[32:35] Trunk.vtx[41] Trunk.vtx[45:48] Trunk.vtx[54:57] ;
+select -tgl Trunk.vtx[20] Trunk.vtx[28:30] Trunk.vtx[38:39] Trunk.vtx[41:42] Trunk.vtx[50:52] Trunk.vtx[60:61] ;
+scale -r -p -1.19209e-007cm 4.16791cm -1.78814e-007cm 0.727054 0.727054 0.727054 ;
 
 select -cl  ;
