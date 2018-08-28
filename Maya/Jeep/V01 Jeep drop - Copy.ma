@@ -1,6 +1,6 @@
 //Maya ASCII 2018 scene
 //Name: V01 Jeep drop - Copy.ma
-//Last modified: Tue, Aug 28, 2018 10:21:00 AM
+//Last modified: Tue, Aug 28, 2018 03:28:56 PM
 //Codeset: 1252
 requires maya "2018";
 currentUnit -l meter -a degree -t film;
@@ -12,8 +12,8 @@ fileInfo "osv" "Microsoft Windows 8 Enterprise Edition, 64-bit  (Build 9200)\n";
 fileInfo "license" "education";
 createNode transform -s -n "persp";
 	rename -uid "C7A26FE7-4C8B-9F26-8C6D-9CBBD7690E42";
-	setAttr ".t" -type "double3" 7.3756839120105058 2.0109099349654942 7.5700180600595814 ;
-	setAttr ".r" -type "double3" 1787.0616472860609 2564.9999999963507 0 ;
+	setAttr ".t" -type "double3" 12.098910838611896 -0.1911134313476012 3.8880085119664889 ;
+	setAttr ".r" -type "double3" 1799.6616472860578 2594.1999999963446 -9.1259221751875633e-17 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "32A85D80-4C4E-3892-0220-79BC633FE5B2";
 	setAttr -k off ".v";
@@ -21,7 +21,7 @@ createNode camera -s -n "perspShape" -p "persp";
 	setAttr ".ncp" 0.001;
 	setAttr ".fcp" 100;
 	setAttr ".fd" 0.05;
-	setAttr ".coi" 10.156056417461633;
+	setAttr ".coi" 12.182813709178079;
 	setAttr ".ow" 0.1;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
@@ -229,7 +229,7 @@ createNode parentConstraint -n "Steering_wheel_Ctrl_Grp_parentConstraint1" -p "S
 	setAttr ".tg[0].tot" -type "double3" 0.55007948961213993 -0.42012065166264728 -0.30462323823559917 ;
 	setAttr ".tg[0].tor" -type "double3" 1.9181523894705658e-14 -5.7999999999999847 
 		3.4534886942392993e-15 ;
-	setAttr ".lr" -type "double3" 0 -95.8 90 ;
+	setAttr ".lr" -type "double3" -1.2722218725854067e-13 -95.8 90.000000000000185 ;
 	setAttr ".rst" -type "double3" 0.4201206516626475 0.30462323823559895 0.55007948961214415 ;
 	setAttr ".rsrr" -type "double3" 0 -95.8 90 ;
 	setAttr -k on ".w0";
@@ -503,7 +503,7 @@ createNode parentConstraint -n "Steering_wheel_parentConstraint1" -p "Steering_w
 	setAttr ".erp" yes;
 	setAttr ".tg[0].tot" -type "double3" 0 7.105427357601002e-17 7.105427357601002e-17 ;
 	setAttr ".tg[0].tor" -type "double3" 0 -1.5107634736951704e-14 0 ;
-	setAttr ".lr" -type "double3" 0 1.5107634736951704e-14 0 ;
+	setAttr ".lr" -type "double3" 0 1.2722218725854067e-14 0 ;
 	setAttr ".rst" -type "double3" 0.55007948961214415 -0.42012065166264723 -0.30462323823559911 ;
 	setAttr ".rsrr" -type "double3" 0 1.5107634736951704e-14 0 ;
 	setAttr -k on ".w0";
@@ -540,7 +540,6 @@ createNode parentConstraint -n "Back_Right_Tire_Jnt_parentConstraint1" -p "|Jeep
 	setAttr ".tg[1].tot" -type "double3" -1.5013972473144543 0.71801178025885937 0.52478347037514073 ;
 	setAttr ".tg[1].tor" -type "double3" -89.999999999999972 6.6792382128310118e-06 
 		90 ;
-	setAttr ".lr" -type "double3" -1.5902773407317584e-14 -4.4139062980501586e-31 -3.1805546814635168e-15 ;
 	setAttr ".rst" -type "double3" -1.5013972473144543 0.71801178025885937 0.52478347037514073 ;
 	setAttr ".rsrr" -type "double3" -1.2722218725854064e-14 -7.0622500768802503e-31 
 		-6.361109362927032e-15 ;
@@ -577,7 +576,6 @@ createNode parentConstraint -n "Back_Left_Tire_Jnt_parentConstraint1" -p "|Jeep|
 	setAttr ".tg[1].tot" -type "double3" -1.5013972473144535 -0.71801177931145999 0.52478340889733754 ;
 	setAttr ".tg[1].tor" -type "double3" -89.999999999999972 6.6792382128310118e-06 
 		90 ;
-	setAttr ".lr" -type "double3" -1.5902773407317584e-14 -4.4139062980501586e-31 -3.1805546814635168e-15 ;
 	setAttr ".rst" -type "double3" -1.5013972473144532 -0.71801177931145999 0.52478340889733754 ;
 	setAttr ".rsrr" -type "double3" -1.2722218725854064e-14 -7.0622500768802503e-31 
 		-6.361109362927032e-15 ;
@@ -616,7 +614,6 @@ createNode parentConstraint -n "Front_Left_Tire_Jnt_parentConstraint1" -p "|Jeep
 		-7.583033279093542e-22 ;
 	setAttr ".tg[1].tot" -type "double3" 1.6893110656738293 -0.71801177931145987 0.52478340889733821 ;
 	setAttr ".tg[1].tor" -type "double3" -90 6.6792382160115655e-06 90.000000000000057 ;
-	setAttr ".lr" -type "double3" 3.1805546814635183e-15 -1.272221872585407e-14 -9.5416640443905519e-15 ;
 	setAttr ".rst" -type "double3" 1.6893110656738293 -0.71801177931145987 0.52478340889733821 ;
 	setAttr ".rsrr" -type "double3" -3.1805546814635168e-15 -6.3611093629270335e-15 
 		3.1805546814635168e-15 ;
@@ -656,7 +653,7 @@ createNode parentConstraint -n "Front_Right_Tire_jnt_parentConstraint1" -p "|Jee
 		-7.583033279093542e-22 ;
 	setAttr ".tg[1].tot" -type "double3" 1.6893110656738275 0.71801178025885948 0.52478347037514095 ;
 	setAttr ".tg[1].tor" -type "double3" -90 6.6792382160115655e-06 90.000000000000057 ;
-	setAttr ".lr" -type "double3" -3.1805546814635128e-15 -3.8166656177562195e-14 -9.5416640443905471e-15 ;
+	setAttr ".lr" -type "double3" -6.361109362927032e-15 -3.1805546814635155e-14 1.7655625192200627e-30 ;
 	setAttr ".rst" -type "double3" 1.6893110656738275 0.71801178025885959 0.52478347037514095 ;
 	setAttr ".rsrr" -type "double3" -3.1805546814635168e-15 -6.3611093629270335e-15 
 		3.1805546814635168e-15 ;
@@ -678,6 +675,7 @@ createNode parentConstraint -n "Everything_Jnt1_parentConstraint1" -p "Everythin
 	setAttr -k off ".sz";
 	setAttr ".erp" yes;
 	setAttr ".tg[0].tor" -type "double3" 89.999999999999972 -90 0 ;
+	setAttr ".lr" -type "double3" -5.1494799544935965 -4.4472571918471591 -0.39540211016866306 ;
 	setAttr -k on ".w0";
 createNode transform -n "Geometry" -p "Jeep";
 	rename -uid "7E000FF7-4121-1772-F20D-3AAB482ACAE2";
@@ -735,7 +733,7 @@ createNode orientConstraint -n "Tire_orientConstraint4" -p "|Jeep|Geometry|Wheel
 	setAttr -k off ".sy";
 	setAttr -k off ".sz";
 	setAttr ".erp" yes;
-	setAttr ".lr" -type "double3" 0 180 -6.6792382128309957e-06 ;
+	setAttr ".lr" -type "double3" -4.3939930110448904 -179.20742023448744 -5.1344330987213977 ;
 	setAttr ".o" -type "double3" -180 0 179.99999332076177 ;
 	setAttr ".rsrr" -type "double3" -180 180 180 ;
 	setAttr -k on ".w0";
@@ -5940,7 +5938,7 @@ createNode orientConstraint -n "Tire_orientConstraint1" -p "|Jeep|Geometry|Wheel
 	setAttr -k off ".sy";
 	setAttr -k off ".sz";
 	setAttr ".erp" yes;
-	setAttr ".lr" -type "double3" 0 180 -6.6792382637198712e-06 ;
+	setAttr ".lr" -type "double3" -4.3939930110448904 -179.20742023448747 -5.1344330987214493 ;
 	setAttr ".o" -type "double3" -180 8.4188581429484532e-38 179.99999332076177 ;
 	setAttr ".rsrr" -type "double3" -180 180 180 ;
 	setAttr -k on ".w0";
@@ -11175,7 +11173,7 @@ createNode parentConstraint -n "Tire1_parentConstraint1" -p "Tire1";
 	setAttr ".tg[0].tot" -type "double3" -2.3134359922026526 0.039834155649355274 -0.3182347436586544 ;
 	setAttr ".tg[0].tor" -type "double3" -89.999999999999986 1.2722218725854067e-14 
 		-90 ;
-	setAttr ".lr" -type "double3" 1.5902773407317587e-14 -6.3611093629270296e-15 -2.8624992133171654e-14 ;
+	setAttr ".lr" -type "double3" 4.3939931031739565 0.79257925378606853 -5.1344264384777478 ;
 	setAttr ".rsrr" -type "double3" 6.3611093629270351e-15 -6.361109362927032e-15 -1.9083328088781101e-14 ;
 	setAttr -k on ".w0";
 createNode mesh -n "polySurfaceShape94" -p "Tire1";
@@ -16983,7 +16981,7 @@ createNode parentConstraint -n "Body_parentConstraint1" -p "Body";
 		-0.26726878289077433 ;
 	setAttr ".tg[0].tor" -type "double3" -89.999999999999986 1.2722218725854067e-14 
 		-90 ;
-	setAttr ".lr" -type "double3" 1.5902773407317587e-14 -6.3611093629270296e-15 -2.8624992133171654e-14 ;
+	setAttr ".lr" -type "double3" 4.3939931031739565 0.79257925378606853 -5.1344264384777478 ;
 	setAttr ".rst" -type "double3" 0 0 1.6653345369377347e-18 ;
 	setAttr ".rsrr" -type "double3" 6.3611093629270351e-15 -6.361109362927032e-15 -1.9083328088781101e-14 ;
 	setAttr -k on ".w0";
@@ -18707,7 +18705,7 @@ createNode parentConstraint -n "Headlights_parentConstraint1" -p "Headlights";
 	setAttr ".tg[0].tot" -type "double3" 2.1015896919542989 3.7594857200755413e-17 -0.16931004864990037 ;
 	setAttr ".tg[0].tor" -type "double3" -89.999999999999986 1.2722218725854067e-14 
 		-90 ;
-	setAttr ".lr" -type "double3" 1.5902773407317587e-14 -6.3611093629270296e-15 -2.8624992133171654e-14 ;
+	setAttr ".lr" -type "double3" 4.3939931031739565 0.79257925378606853 -5.1344264384777478 ;
 	setAttr ".rst" -type "double3" 0 0 5.3290705182007512e-17 ;
 	setAttr ".rsrr" -type "double3" 6.3611093629270351e-15 -6.361109362927032e-15 -1.9083328088781101e-14 ;
 	setAttr -k on ".w0";
@@ -19057,7 +19055,7 @@ createNode parentConstraint -n "L_Mirror_Small_parentConstraint1" -p "L_Mirror_S
 	setAttr ".tg[0].tot" -type "double3" 0.51944295656277772 -0.91317623929617542 -0.52501768147460615 ;
 	setAttr ".tg[0].tor" -type "double3" -89.999999999999986 1.2722218725854067e-14 
 		-90 ;
-	setAttr ".lr" -type "double3" 1.5902773407317587e-14 -6.3611093629270296e-15 -2.8624992133171654e-14 ;
+	setAttr ".lr" -type "double3" 4.3939931031739565 0.79257925378606853 -5.1344264384777478 ;
 	setAttr ".rst" -type "double3" 0 0 8.8817841970012525e-18 ;
 	setAttr ".rsrr" -type "double3" 6.3611093629270351e-15 -6.361109362927032e-15 -1.9083328088781101e-14 ;
 	setAttr -k on ".w0";
@@ -19277,7 +19275,7 @@ createNode parentConstraint -n "R_Mirror_Small_parentConstraint1" -p "R_Mirror_S
 	setAttr ".tg[0].tot" -type "double3" 0.51944295656277772 0.91317631351154949 -0.5250176814746057 ;
 	setAttr ".tg[0].tor" -type "double3" -89.999999999999986 1.2722218725854067e-14 
 		-90 ;
-	setAttr ".lr" -type "double3" 1.5902773407317587e-14 -6.3611093629270296e-15 -2.8624992133171654e-14 ;
+	setAttr ".lr" -type "double3" 4.3939931031739565 0.79257925378606853 -5.1344264384777478 ;
 	setAttr ".rst" -type "double3" 0 -4.4408920985006263e-18 8.8817841970012525e-18 ;
 	setAttr ".rsrr" -type "double3" 6.3611093629270351e-15 -6.361109362927032e-15 -1.9083328088781101e-14 ;
 	setAttr -k on ".w0";
@@ -20160,7 +20158,7 @@ createNode parentConstraint -n "Mirrors_parentConstraint1" -p "Mirrors";
 	setAttr ".tg[0].tot" -type "double3" 0.60444238080876334 -0.85711513336206591 -0.4121671384816073 ;
 	setAttr ".tg[0].tor" -type "double3" -89.999999999999986 1.2722218725854067e-14 
 		-90 ;
-	setAttr ".lr" -type "double3" 1.5902773407317587e-14 -6.3611093629270296e-15 -2.8624992133171654e-14 ;
+	setAttr ".lr" -type "double3" 4.3939931031739565 0.79257925378606853 -5.1344264384777478 ;
 	setAttr ".rsrr" -type "double3" 6.3611093629270351e-15 -6.361109362927032e-15 -1.9083328088781101e-14 ;
 	setAttr -k on ".w0";
 createNode transform -n "Day_Lights" -p "MainBody";
@@ -20198,7 +20196,7 @@ createNode parentConstraint -n "Day_Lights_parentConstraint1" -p "Day_Lights";
 		0.011259339599965513 ;
 	setAttr ".tg[0].tor" -type "double3" -89.999999999999986 1.2722218725854067e-14 
 		-90 ;
-	setAttr ".lr" -type "double3" 1.5902773407317587e-14 -6.3611093629270296e-15 -2.8624992133171654e-14 ;
+	setAttr ".lr" -type "double3" 4.3939931031739565 0.79257925378606853 -5.1344264384777478 ;
 	setAttr ".rsrr" -type "double3" 6.3611093629270351e-15 -6.361109362927032e-15 -1.9083328088781101e-14 ;
 	setAttr -k on ".w0";
 createNode mesh -n "polySurfaceShape98" -p "Day_Lights";
@@ -20707,7 +20705,7 @@ createNode parentConstraint -n "Gears_Shaft_FtB_parentConstraint1" -p "Gears_Sha
 		0.52478358763174937 ;
 	setAttr ".tg[0].tor" -type "double3" -89.999999999999986 1.2722218725854067e-14 
 		-90 ;
-	setAttr ".lr" -type "double3" 1.5902773407317587e-14 -6.3611093629270296e-15 -2.8624992133171654e-14 ;
+	setAttr ".lr" -type "double3" 4.3939931031739565 0.79257925378606853 -5.1344264384777478 ;
 	setAttr ".rst" -type "double3" 0 -1.7763568394002505e-17 0 ;
 	setAttr ".rsrr" -type "double3" 6.3611093629270351e-15 -6.361109362927032e-15 -1.9083328088781101e-14 ;
 	setAttr -k on ".w0";
@@ -20870,7 +20868,7 @@ createNode parentConstraint -n "Rear_Gears_parentConstraint1" -p "Rear_Gears";
 		0.4844686091292878 ;
 	setAttr ".tg[0].tor" -type "double3" -89.999999999999986 1.2722218725854067e-14 
 		-90 ;
-	setAttr ".lr" -type "double3" 1.5902773407317587e-14 -6.3611093629270296e-15 -2.8624992133171654e-14 ;
+	setAttr ".lr" -type "double3" 4.3939931031739565 0.79257925378606853 -5.1344264384777478 ;
 	setAttr ".rst" -type "double3" -5.0684672585385398e-34 -8.8817841970012525e-18 -7.105427357601002e-17 ;
 	setAttr ".rsrr" -type "double3" 6.3611093629270351e-15 -6.361109362927032e-15 -1.9083328088781101e-14 ;
 	setAttr -k on ".w0";
@@ -21001,7 +20999,7 @@ createNode parentConstraint -n "Tail_Lights_parentConstraint1" -p "Tail_Lights";
 	setAttr ".tg[0].tot" -type "double3" -2.1641972231588271 7.171595356219488e-09 -0.022654193282346573 ;
 	setAttr ".tg[0].tor" -type "double3" -89.999999999999986 1.2722218725854067e-14 
 		-90 ;
-	setAttr ".lr" -type "double3" 1.5902773407317587e-14 -6.3611093629270296e-15 -2.8624992133171654e-14 ;
+	setAttr ".lr" -type "double3" 4.3939931031739565 0.79257925378606853 -5.1344264384777478 ;
 	setAttr ".rst" -type "double3" -1.3234889800848443e-25 0 -3.552713678800501e-17 ;
 	setAttr ".rsrr" -type "double3" 6.3611093629270351e-15 -6.361109362927032e-15 -1.9083328088781101e-14 ;
 	setAttr -k on ".w0";
@@ -21396,7 +21394,7 @@ createNode parentConstraint -n "Front_Gears_parentConstraint1" -p "|Jeep|Geometr
 	setAttr ".tg[0].tot" -type "double3" 1.5657400725790682 3.3396918205124736e-07 0.52998024087551521 ;
 	setAttr ".tg[0].tor" -type "double3" -89.999999999999986 1.2722218725854067e-14 
 		-90 ;
-	setAttr ".lr" -type "double3" 1.5902773407317587e-14 -6.3611093629270296e-15 -2.8624992133171654e-14 ;
+	setAttr ".lr" -type "double3" 4.3939931031739565 0.79257925378606853 -5.1344264384777478 ;
 	setAttr ".rst" -type "double3" -8.4703294725430036e-24 0 0 ;
 	setAttr ".rsrr" -type "double3" 6.3611093629270351e-15 -6.361109362927032e-15 -1.9083328088781101e-14 ;
 	setAttr -k on ".w0";
@@ -21479,7 +21477,7 @@ createNode parentConstraint -n "Trailer_Hitch_parentConstraint1" -p "Trailer_Hit
 		0.40672060207420485 ;
 	setAttr ".tg[0].tor" -type "double3" -89.999999999999986 1.2722218725854067e-14 
 		-90 ;
-	setAttr ".lr" -type "double3" 1.5902773407317587e-14 -6.3611093629270296e-15 -2.8624992133171654e-14 ;
+	setAttr ".lr" -type "double3" 4.3939931031739565 0.79257925378606853 -5.1344264384777478 ;
 	setAttr ".rst" -type "double3" -5.0684672585385398e-34 0 -3.552713678800501e-17 ;
 	setAttr ".rsrr" -type "double3" 6.3611093629270351e-15 -6.361109362927032e-15 -1.9083328088781101e-14 ;
 	setAttr -k on ".w0";
@@ -21542,7 +21540,7 @@ createNode parentConstraint -n "Brake_Light_bar_parentConstraint1" -p "Brake_Lig
 		-0.91689587182660592 ;
 	setAttr ".tg[0].tor" -type "double3" -89.999999999999986 1.2722218725854067e-14 
 		-90 ;
-	setAttr ".lr" -type "double3" 1.5902773407317587e-14 -6.3611093629270296e-15 -2.8624992133171654e-14 ;
+	setAttr ".lr" -type "double3" 4.3939931031739565 0.79257925378606853 -5.1344264384777478 ;
 	setAttr ".rst" -type "double3" -5.0684672585385398e-34 0 0 ;
 	setAttr ".rsrr" -type "double3" 6.3611093629270351e-15 -6.361109362927032e-15 -1.9083328088781101e-14 ;
 	setAttr -k on ".w0";
@@ -22276,7 +22274,7 @@ createNode parentConstraint -n "Passenger_Seat_parentConstraint1" -p "Passenger_
 	setAttr ".tg[0].tot" -type "double3" 0.085105348138259734 0.31128183925507885 -0.30880098629302383 ;
 	setAttr ".tg[0].tor" -type "double3" -89.999999999999986 1.2722218725854067e-14 
 		-90 ;
-	setAttr ".lr" -type "double3" 1.5902773407317587e-14 -6.3611093629270296e-15 -2.8624992133171654e-14 ;
+	setAttr ".lr" -type "double3" 4.3939931031739565 0.79257925378606853 -5.1344264384777478 ;
 	setAttr ".rst" -type "double3" 0 2.2204460492503131e-18 0 ;
 	setAttr ".rsrr" -type "double3" 6.3611093629270351e-15 -6.361109362927032e-15 -1.9083328088781101e-14 ;
 	setAttr -k on ".w0";
@@ -23015,7 +23013,7 @@ createNode parentConstraint -n "Driver_Seat_parentConstraint1" -p "Driver_Seat";
 	setAttr ".tg[0].tot" -type "double3" 0.085105348138259734 -0.31128183925507874 -0.30880098629302394 ;
 	setAttr ".tg[0].tor" -type "double3" -89.999999999999986 1.2722218725854067e-14 
 		-90 ;
-	setAttr ".lr" -type "double3" 1.5902773407317587e-14 -6.3611093629270296e-15 -2.8624992133171654e-14 ;
+	setAttr ".lr" -type "double3" 4.3939931031739565 0.79257925378606853 -5.1344264384777478 ;
 	setAttr ".rst" -type "double3" 0 4.4408920985006263e-18 0 ;
 	setAttr ".rsrr" -type "double3" 6.3611093629270351e-15 -6.361109362927032e-15 -1.9083328088781101e-14 ;
 	setAttr -k on ".w0";
@@ -23694,7 +23692,7 @@ createNode parentConstraint -n "Rear_Seat_parentConstraint1" -p "Rear_Seat";
 		-0.28623613585365926 ;
 	setAttr ".tg[0].tor" -type "double3" -89.999999999999986 1.2722218725854067e-14 
 		-90 ;
-	setAttr ".lr" -type "double3" 1.5902773407317587e-14 -6.3611093629270296e-15 -2.8624992133171654e-14 ;
+	setAttr ".lr" -type "double3" 4.3939931031739565 0.79257925378606853 -5.1344264384777478 ;
 	setAttr ".rsrr" -type "double3" 6.3611093629270351e-15 -6.361109362927032e-15 -1.9083328088781101e-14 ;
 	setAttr -k on ".w0";
 createNode transform -n "Trunk" -p "MainBody";
@@ -23843,7 +23841,7 @@ createNode parentConstraint -n "Trunk_parentConstraint1" -p "Trunk";
 	setAttr ".tg[0].tot" -type "double3" -1.5980955137728223 3.129088926107479e-17 -0.14091950098579917 ;
 	setAttr ".tg[0].tor" -type "double3" -89.999999999999986 1.2722218725854067e-14 
 		-90 ;
-	setAttr ".lr" -type "double3" 1.5902773407317587e-14 -6.3611093629270296e-15 -2.8624992133171654e-14 ;
+	setAttr ".lr" -type "double3" 4.3939931031739565 0.79257925378606853 -5.1344264384777478 ;
 	setAttr ".rst" -type "double3" 0 2.2204460492503131e-18 -3.552713678800501e-17 ;
 	setAttr ".rsrr" -type "double3" 6.3611093629270351e-15 -6.361109362927032e-15 -1.9083328088781101e-14 ;
 	setAttr -k on ".w0";
@@ -24008,7 +24006,7 @@ createNode parentConstraint -n "Dashboard_parentConstraint1" -p "Dashboard";
 		-0.029674720358559045 ;
 	setAttr ".tg[0].tor" -type "double3" -89.999999999999986 1.2722218725854067e-14 
 		-90 ;
-	setAttr ".lr" -type "double3" 1.5902773407317587e-14 -6.3611093629270296e-15 -2.8624992133171654e-14 ;
+	setAttr ".lr" -type "double3" 4.3939931031739565 0.79257925378606853 -5.1344264384777478 ;
 	setAttr ".rst" -type "double3" 0 5.5511151231257828e-19 0 ;
 	setAttr ".rsrr" -type "double3" 6.3611093629270351e-15 -6.361109362927032e-15 -1.9083328088781101e-14 ;
 	setAttr -k on ".w0";
@@ -24047,7 +24045,7 @@ createNode parentConstraint -n "Steering_Wheel_parentConstraint1" -p "Steering_W
 	setAttr ".tg[0].tot" -type "double3" -1.4210854715202004e-16 0 7.105427357601002e-17 ;
 	setAttr ".tg[0].tor" -type "double3" -95.800000000000011 3.1964140038728024e-14 
 		-90 ;
-	setAttr ".lr" -type "double3" -6.3611093629270304e-15 -9.5416640443905519e-15 -3.1805546814635168e-14 ;
+	setAttr ".lr" -type "double3" 4.3939931031739343 0.79257925378606431 -5.1344264384777505 ;
 	setAttr ".rst" -type "double3" 1.7763568394002505e-17 -1.7763568394002505e-17 4.4408920985006263e-18 ;
 	setAttr ".rsrr" -type "double3" -6.3611093629270304e-15 -9.5416640443905519e-15 
 		-3.1805546814635168e-14 ;
@@ -24965,7 +24963,7 @@ createNode parentConstraint -n "Bars_parentConstraint1" -p "Bars";
 		-0.46406359228135052 ;
 	setAttr ".tg[0].tor" -type "double3" -89.999999999999986 1.2722218725854067e-14 
 		-90 ;
-	setAttr ".lr" -type "double3" 1.5902773407317587e-14 -6.3611093629270296e-15 -2.8624992133171654e-14 ;
+	setAttr ".lr" -type "double3" 4.3939931031739565 0.79257925378606853 -5.1344264384777478 ;
 	setAttr ".rst" -type "double3" -5.0684672585385398e-34 0 -3.552713678800501e-17 ;
 	setAttr ".rsrr" -type "double3" 6.3611093629270351e-15 -6.361109362927032e-15 -1.9083328088781101e-14 ;
 	setAttr -k on ".w0";
@@ -25023,7 +25021,7 @@ createNode orientConstraint -n "Tire_orientConstraint3" -p "|Jeep|Geometry|Wheel
 	setAttr -k off ".sy";
 	setAttr -k off ".sz";
 	setAttr ".erp" yes;
-	setAttr ".lr" -type "double3" 0 180 -6.6792382637198712e-06 ;
+	setAttr ".lr" -type "double3" -4.3939930110448904 -179.20742023448742 -5.1344330987213977 ;
 	setAttr ".o" -type "double3" -180 8.4188581429484532e-38 179.99999332076177 ;
 	setAttr ".rsrr" -type "double3" -180 180 180 ;
 	setAttr -k on ".w0";
@@ -30230,7 +30228,7 @@ createNode orientConstraint -n "Tire_orientConstraint2" -p "|Jeep|Geometry|Wheel
 	setAttr -k off ".sy";
 	setAttr -k off ".sz";
 	setAttr ".erp" yes;
-	setAttr ".lr" -type "double3" 0 180 -6.6792382637198712e-06 ;
+	setAttr ".lr" -type "double3" -4.3939930110448904 -179.20742023448742 -5.1344330987213977 ;
 	setAttr ".o" -type "double3" -180 8.4188581429484532e-38 179.99999332076177 ;
 	setAttr ".rsrr" -type "double3" -180 180 180 ;
 	setAttr -k on ".w0";
@@ -35317,7 +35315,7 @@ createNode parentConstraint -n "BR_Wheel_Locator_parentConstraint1" -p "BR_Wheel
 	setAttr ".tg[0].tot" -type "double3" 0 7.105427357601002e-17 0 ;
 	setAttr ".tg[0].tor" -type "double3" -179.99999999999994 3.1805602430466085e-15 
 		179.99999332076177 ;
-	setAttr ".lr" -type "double3" 1.9083328088781097e-14 9.5416640443905582e-15 -4.4527765540489241e-14 ;
+	setAttr ".lr" -type "double3" 4.3939931031739592 0.79257925378608529 -5.1344264384777638 ;
 	setAttr ".rst" -type "double3" 0 7.105427357601002e-17 0 ;
 	setAttr ".rsrr" -type "double3" 1.5902773407317584e-14 1.2722218725854067e-14 6.3611093629270367e-15 ;
 	setAttr -k on ".w0";
@@ -35348,7 +35346,7 @@ createNode parentConstraint -n "BL_Wheel_Locator_parentConstraint1" -p "BL_Wheel
 	setAttr ".tg[0].tot" -type "double3" 0 7.105427357601002e-17 -2.8421709430404008e-16 ;
 	setAttr ".tg[0].tor" -type "double3" -179.99999999999994 3.1805602430466085e-15 
 		179.99999332076177 ;
-	setAttr ".lr" -type "double3" 1.9083328088781097e-14 9.5416640443905582e-15 -4.4527765540489241e-14 ;
+	setAttr ".lr" -type "double3" 4.3939931031739592 0.79257925378608529 -5.1344264384777638 ;
 	setAttr ".rst" -type "double3" 0 7.105427357601002e-17 2.8421709430404008e-16 ;
 	setAttr ".rsrr" -type "double3" 1.5902773407317584e-14 1.2722218725854067e-14 6.3611093629270367e-15 ;
 	setAttr -k on ".w0";
@@ -35378,7 +35376,7 @@ createNode parentConstraint -n "FL_Wheel_Locator_parentConstraint1" -p "FL_Wheel
 	setAttr ".erp" yes;
 	setAttr ".tg[0].tot" -type "double3" 0 -1.4210854715202004e-16 0 ;
 	setAttr ".tg[0].tor" -type "double3" -180 -3.49860992714652e-14 179.99999332076177 ;
-	setAttr ".lr" -type "double3" 3.1805546814635444e-15 -5.7249984266343308e-14 -5.4069429584879788e-14 ;
+	setAttr ".lr" -type "double3" 4.3939931031739423 0.79257925378602123 -5.1344264384777754 ;
 	setAttr ".rst" -type "double3" 0 -1.4210854715202004e-16 0 ;
 	setAttr ".rsrr" -type "double3" -1.272221872585407e-14 -4.4527765540489241e-14 4.9435750538161805e-30 ;
 	setAttr -k on ".w0";
@@ -35408,7 +35406,7 @@ createNode parentConstraint -n "FR_Wheel_Locator_parentConstraint1" -p "FR_Wheel
 	setAttr ".erp" yes;
 	setAttr ".tg[0].tot" -type "double3" 0 1.4210854715202004e-16 2.8421709430404008e-16 ;
 	setAttr ".tg[0].tor" -type "double3" -180 -3.49860992714652e-14 179.99999332076177 ;
-	setAttr ".lr" -type "double3" 3.1805546814635444e-15 -5.7249984266343308e-14 -5.4069429584879788e-14 ;
+	setAttr ".lr" -type "double3" 4.3939931031739423 0.79257925378602123 -5.1344264384777754 ;
 	setAttr ".rst" -type "double3" 0 1.4210854715202004e-16 -2.8421709430404008e-16 ;
 	setAttr ".rsrr" -type "double3" -1.272221872585407e-14 -4.4527765540489241e-14 4.9435750538161805e-30 ;
 	setAttr -k on ".w0";
@@ -36486,8 +36484,8 @@ createNode file -n "file2";
 createNode place2dTexture -n "place2dTexture2";
 	rename -uid "C70EA839-4E99-2BC1-E2D4-639B186CBA38";
 select -ne :time1;
-	setAttr ".o" 85;
-	setAttr ".unw" 85;
+	setAttr ".o" 29;
+	setAttr ".unw" 29;
 select -ne :hardwareRenderingGlobals;
 	setAttr ".otfna" -type "stringArray" 22 "NURBS Curves" "NURBS Surfaces" "Polygons" "Subdiv Surface" "Particles" "Particle Instance" "Fluids" "Strokes" "Image Planes" "UI" "Lights" "Cameras" "Locators" "Joints" "IK Handles" "Deformers" "Motion Trails" "Components" "Hair Systems" "Follicles" "Misc. UI" "Ornaments"  ;
 	setAttr ".otfva" -type "Int32Array" 22 0 1 1 1 1 1
