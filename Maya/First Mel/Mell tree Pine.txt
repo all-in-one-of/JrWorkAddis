@@ -13,6 +13,7 @@ scale -r -p -1.19209e-07cm 1.642871cm -1.19209e-07cm 1.513387 1.513387 1.513387 
 select -r pCylinder1.vtx[0:19] pCylinder1.vtx[40] ;
 scale -r -p -1.19209e-07cm -1.19209e-07cm -1.78814e-07cm 2.011995 2.011995 2.011995 ;
 
+//Make the branches
 polyCone -r 4 -h 4 -sx 20 -sy 1 -sz 0 -ax 0 1 0 -rcp 0 -cuv 3 -ch 1;
 move -r 0 5;
 select -r pCone1.f[0] ;
@@ -117,7 +118,6 @@ scale -r 0.846398 0.846398 0.846398 ;
 
 select -r pCone4 ;
 duplicate -rr;
-// Undo: move -r 0 0.769633 0  // 
 move -r 0 0.492836 0 ;
 rotate -r -os -fo 0 89.326188 0 ;
 scale -r 0.810452 0.810452 0.810452 ;
@@ -135,4 +135,18 @@ select -r Trunk.vtx[23:26] Trunk.vtx[32:35] Trunk.vtx[41] Trunk.vtx[45:48] Trunk
 select -tgl Trunk.vtx[20] Trunk.vtx[28:30] Trunk.vtx[38:39] Trunk.vtx[41:42] Trunk.vtx[50:52] Trunk.vtx[60:61] ;
 scale -r -p -1.19209e-007cm 4.16791cm -1.78814e-007cm 0.727054 0.727054 0.727054 ;
 
-select -cl  ;
+select -r pCone5 pCone3 pCone4 pCone2 pCone1 ;
+polyUnite -ch 1 -mergeUVSets 1 -centerPivot -name pCone5 pCone5 pCone3 pCone4 pCone2 pCone1;
+rename "pCone6" "Leaves";
+
+//Delete History to get rid of the Cone transforms from before the merge.
+DeleteAllHistory;
+delete -all -constructionHistory;
+
+//Duplicate to make another one.
+select -r Trunk Leaves ;
+duplicate -rr;
+move -r -8.071974 0 0 ;
+rotate -r -os -fo 0 -33.273231 0 ;
+
+//select -cl  ;
