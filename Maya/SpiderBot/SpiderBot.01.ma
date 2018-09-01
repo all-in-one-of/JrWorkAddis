@@ -1,6 +1,6 @@
 //Maya ASCII 2017ff05 scene
 //Name: SpiderBot.01.ma
-//Last modified: Sat, Sep 01, 2018 02:00:44 PM
+//Last modified: Sat, Sep 01, 2018 02:02:19 PM
 //Codeset: 1252
 requires maya "2017ff05";
 requires "stereoCamera" "10.0";
@@ -15,14 +15,14 @@ fileInfo "license" "student";
 createNode transform -s -n "persp";
 	rename -uid "2C7FB34D-47D8-3F54-99F3-53B1CD23A427";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" -4.7779982833339787 18.14350633679847 29.578183221762725 ;
-	setAttr ".r" -type "double3" 702.26164723545401 -1083.000000000409 1.9905746893456154e-016 ;
+	setAttr ".t" -type "double3" -7.1488787554849571 12.106301611305236 42.014789868340962 ;
+	setAttr ".r" -type "double3" 717.86164723533477 -1087.4000000002513 2.5056777278100251e-017 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "113807D5-483A-E7F6-4060-27B347736CC2";
 	setAttr -k off ".v" no;
 	setAttr ".pze" yes;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 36.691136640060328;
+	setAttr ".coi" 46.083521981981576;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -8468,22 +8468,14 @@ createNode joint -n "aim" -p "R_Back_toe_01_jnt";
 	setAttr ".mxrl" -type "double3" 360 360 360 ;
 	setAttr ".dla" yes;
 	setAttr ".radi" 0.3;
-createNode joint -n "Body_Jnt1" -p "Cog_Jnt";
-	rename -uid "C48E9A4E-44A1-460E-8EE3-659B6A4C3C0F";
-	setAttr ".t" -type "double3" 7.6763799999999995e-017 2.2695922851312389e-005 3.70635986346457e-008 ;
-	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
-	setAttr ".mxrl" -type "double3" 360 360 360 ;
-	setAttr ".dla" yes;
-	setAttr ".jot" -type "string" "none";
-	setAttr ".jo" -type "double3" -180 0 0 ;
-createNode joint -n "L_Front_Leg_01_Jnt" -p "Body_Jnt1";
+createNode joint -n "L_Front_Leg_01_Jnt" -p "Body_Jnt";
 	rename -uid "11DCBCA2-4A49-7A32-4BB8-E5BDF0BD7A45";
-	setAttr ".t" -type "double3" 2.22553 2.1677599999999995 -1.4127210000000001 ;
+	setAttr ".t" -type "double3" 2.22553 -2.1677373040771482 1.4127210370635988 ;
 	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
 	setAttr ".mxrl" -type "double3" 360 360 360 ;
 	setAttr ".dla" yes;
 	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 179.99999999999983 -40.349900848987836 148.1642243174397 ;
+	setAttr ".jo" -type "double3" -1.9294971487796605e-013 40.349900848987843 -148.1642243174397 ;
 createNode joint -n "L_Front_Leg_02_Jnt" -p "L_Front_Leg_01_Jnt";
 	rename -uid "63987237-4683-2608-4605-33B6268D13B3";
 	setAttr ".t" -type "double3" -3.8219894974000672 -2.3658015858352144e-005 -1.9699485918067694e-006 ;
@@ -8553,14 +8545,14 @@ createNode joint -n "Aim" -p "L_Front_Toe_03_Jnt";
 	setAttr ".mxrl" -type "double3" 360 360 360 ;
 	setAttr ".dla" yes;
 	setAttr ".radi" 0.3;
-createNode joint -n "L_Middle_Leg_01_Jnt" -p "Body_Jnt1";
+createNode joint -n "L_Middle_Leg_01_Jnt" -p "Body_Jnt";
 	rename -uid "CA37E7BC-45E6-3F69-517B-3F8A0BE1C14E";
-	setAttr ".t" -type "double3" 2.01549 1.0204000000000004 0.48512999999999978 ;
+	setAttr ".t" -type "double3" 2.01549 -1.0203773040771491 -0.48512996293640098 ;
 	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
 	setAttr ".mxrl" -type "double3" 360 360 360 ;
 	setAttr ".dla" yes;
 	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 179.99999999999977 0.10278403010891177 175.94735180334021 ;
+	setAttr ".jo" -type "double3" -2.43015821860472e-013 -0.10278403010891127 -175.94735180334021 ;
 createNode joint -n "L_Middle_Leg_02_Jnt" -p "L_Middle_Leg_01_Jnt";
 	rename -uid "ECA87857-4DB3-B087-CA0F-E7AE8A976F85";
 	setAttr ".t" -type "double3" -3.9342875749125463 -5.2317516413324938e-005 7.9237446604096817e-007 ;
@@ -8634,14 +8626,14 @@ createNode joint -n "Aim" -p "L_Middle_Toe_01_Jnt";
 	setAttr ".dla" yes;
 	setAttr ".jo" -type "double3" 1.7075472925031869e-006 7.1153258920738869e-022 -8.8574295449610396e-024 ;
 	setAttr ".radi" 0.3;
-createNode joint -n "L_Back_Leg_01_Jnt" -p "Body_Jnt1";
+createNode joint -n "L_Back_Leg_01_Jnt" -p "Body_Jnt";
 	rename -uid "0BBF83CF-44CF-D6C9-7575-808BBE77D97C";
-	setAttr ".t" -type "double3" 2.05072 -0.18800000000000061 2.1145389999999997 ;
+	setAttr ".t" -type "double3" 2.05072 0.18802269592285192 -2.1145389629364013 ;
 	setAttr ".mnrl" -type "double3" -360 -360 -360 ;
 	setAttr ".mxrl" -type "double3" 360 360 360 ;
 	setAttr ".dla" yes;
 	setAttr ".jot" -type "string" "xzy";
-	setAttr ".jo" -type "double3" 0 121.003507634141 21.441243357238115 ;
+	setAttr ".jo" -type "double3" -1.2679524745075775e-014 -58.996492365859034 158.55875664276192 ;
 createNode joint -n "L_Back_Leg_02_Jnt" -p "L_Back_Leg_01_Jnt";
 	rename -uid "154C9CAE-4F0C-A3EB-9294-F3BE0DF00C9F";
 	setAttr ".t" -type "double3" -3.8643472696123506 -1.8420250279760353e-005 5.1839964898547919e-007 ;
@@ -9009,45 +9001,44 @@ connectAttr "R_Back_toe_02_Jnt.s" "|Spider_Bot|Skeleton|RK_Skeleton|Cog_Jnt|Body
 connectAttr "R_Back_Foot_Jnt.s" "R_Back_toe_01_jnt.is";
 connectAttr "R_Back_toe_01_jnt.s" "|Spider_Bot|Skeleton|RK_Skeleton|Cog_Jnt|Body_Jnt|R_Back_Leg_01_Jnt|R_Back_Leg_02_Jnt|R_Back_Leg_03_Jnt|R_Back_Foot_Jnt|R_Back_toe_01_jnt|aim.is"
 		;
-connectAttr "Cog_Jnt.s" "Body_Jnt1.is";
-connectAttr "Body_Jnt1.s" "L_Front_Leg_01_Jnt.is";
+connectAttr "Body_Jnt.s" "L_Front_Leg_01_Jnt.is";
 connectAttr "L_Front_Leg_01_Jnt.s" "L_Front_Leg_02_Jnt.is";
 connectAttr "L_Front_Leg_02_Jnt.s" "L_Front_Leg_03_Jnt.is";
 connectAttr "L_Front_Leg_03_Jnt.s" "L_Front_Foot_Jnt.is";
 connectAttr "L_Front_Foot_Jnt.s" "L_Front_Toe_01_Jnt.is";
-connectAttr "L_Front_Toe_01_Jnt.s" "|Spider_Bot|Skeleton|RK_Skeleton|Cog_Jnt|Body_Jnt1|L_Front_Leg_01_Jnt|L_Front_Leg_02_Jnt|L_Front_Leg_03_Jnt|L_Front_Foot_Jnt|L_Front_Toe_01_Jnt|Aim.is"
+connectAttr "L_Front_Toe_01_Jnt.s" "|Spider_Bot|Skeleton|RK_Skeleton|Cog_Jnt|Body_Jnt|L_Front_Leg_01_Jnt|L_Front_Leg_02_Jnt|L_Front_Leg_03_Jnt|L_Front_Foot_Jnt|L_Front_Toe_01_Jnt|Aim.is"
 		;
 connectAttr "L_Front_Foot_Jnt.s" "L_Front_Toe_02_Jnt.is";
-connectAttr "L_Front_Toe_02_Jnt.s" "|Spider_Bot|Skeleton|RK_Skeleton|Cog_Jnt|Body_Jnt1|L_Front_Leg_01_Jnt|L_Front_Leg_02_Jnt|L_Front_Leg_03_Jnt|L_Front_Foot_Jnt|L_Front_Toe_02_Jnt|Aim.is"
+connectAttr "L_Front_Toe_02_Jnt.s" "|Spider_Bot|Skeleton|RK_Skeleton|Cog_Jnt|Body_Jnt|L_Front_Leg_01_Jnt|L_Front_Leg_02_Jnt|L_Front_Leg_03_Jnt|L_Front_Foot_Jnt|L_Front_Toe_02_Jnt|Aim.is"
 		;
 connectAttr "L_Front_Foot_Jnt.s" "L_Front_Toe_03_Jnt.is";
-connectAttr "L_Front_Toe_03_Jnt.s" "|Spider_Bot|Skeleton|RK_Skeleton|Cog_Jnt|Body_Jnt1|L_Front_Leg_01_Jnt|L_Front_Leg_02_Jnt|L_Front_Leg_03_Jnt|L_Front_Foot_Jnt|L_Front_Toe_03_Jnt|Aim.is"
+connectAttr "L_Front_Toe_03_Jnt.s" "|Spider_Bot|Skeleton|RK_Skeleton|Cog_Jnt|Body_Jnt|L_Front_Leg_01_Jnt|L_Front_Leg_02_Jnt|L_Front_Leg_03_Jnt|L_Front_Foot_Jnt|L_Front_Toe_03_Jnt|Aim.is"
 		;
-connectAttr "Body_Jnt1.s" "L_Middle_Leg_01_Jnt.is";
+connectAttr "Body_Jnt.s" "L_Middle_Leg_01_Jnt.is";
 connectAttr "L_Middle_Leg_01_Jnt.s" "L_Middle_Leg_02_Jnt.is";
 connectAttr "L_Middle_Leg_02_Jnt.s" "L_Middle_Leg_03_Jnt.is";
 connectAttr "L_Middle_Leg_03_Jnt.s" "L_Middle_Foot_Jnt.is";
 connectAttr "L_Middle_Foot_Jnt.s" "L_Middle_Toe_03_Jnt.is";
-connectAttr "L_Middle_Toe_03_Jnt.s" "|Spider_Bot|Skeleton|RK_Skeleton|Cog_Jnt|Body_Jnt1|L_Middle_Leg_01_Jnt|L_Middle_Leg_02_Jnt|L_Middle_Leg_03_Jnt|L_Middle_Foot_Jnt|L_Middle_Toe_03_Jnt|Aim.is"
+connectAttr "L_Middle_Toe_03_Jnt.s" "|Spider_Bot|Skeleton|RK_Skeleton|Cog_Jnt|Body_Jnt|L_Middle_Leg_01_Jnt|L_Middle_Leg_02_Jnt|L_Middle_Leg_03_Jnt|L_Middle_Foot_Jnt|L_Middle_Toe_03_Jnt|Aim.is"
 		;
 connectAttr "L_Middle_Foot_Jnt.s" "L_Middle_Toe_02_Jnt.is";
-connectAttr "L_Middle_Toe_02_Jnt.s" "|Spider_Bot|Skeleton|RK_Skeleton|Cog_Jnt|Body_Jnt1|L_Middle_Leg_01_Jnt|L_Middle_Leg_02_Jnt|L_Middle_Leg_03_Jnt|L_Middle_Foot_Jnt|L_Middle_Toe_02_Jnt|Aim.is"
+connectAttr "L_Middle_Toe_02_Jnt.s" "|Spider_Bot|Skeleton|RK_Skeleton|Cog_Jnt|Body_Jnt|L_Middle_Leg_01_Jnt|L_Middle_Leg_02_Jnt|L_Middle_Leg_03_Jnt|L_Middle_Foot_Jnt|L_Middle_Toe_02_Jnt|Aim.is"
 		;
 connectAttr "L_Middle_Foot_Jnt.s" "L_Middle_Toe_01_Jnt.is";
-connectAttr "L_Middle_Toe_01_Jnt.s" "|Spider_Bot|Skeleton|RK_Skeleton|Cog_Jnt|Body_Jnt1|L_Middle_Leg_01_Jnt|L_Middle_Leg_02_Jnt|L_Middle_Leg_03_Jnt|L_Middle_Foot_Jnt|L_Middle_Toe_01_Jnt|Aim.is"
+connectAttr "L_Middle_Toe_01_Jnt.s" "|Spider_Bot|Skeleton|RK_Skeleton|Cog_Jnt|Body_Jnt|L_Middle_Leg_01_Jnt|L_Middle_Leg_02_Jnt|L_Middle_Leg_03_Jnt|L_Middle_Foot_Jnt|L_Middle_Toe_01_Jnt|Aim.is"
 		;
-connectAttr "Body_Jnt1.s" "L_Back_Leg_01_Jnt.is";
+connectAttr "Body_Jnt.s" "L_Back_Leg_01_Jnt.is";
 connectAttr "L_Back_Leg_01_Jnt.s" "L_Back_Leg_02_Jnt.is";
 connectAttr "L_Back_Leg_02_Jnt.s" "L_Back_Leg_03_Jnt.is";
 connectAttr "L_Back_Leg_03_Jnt.s" "L_Back_Foot_Jnt.is";
 connectAttr "L_Back_Foot_Jnt.s" "L_Back_toe_03_Jnt.is";
-connectAttr "L_Back_toe_03_Jnt.s" "|Spider_Bot|Skeleton|RK_Skeleton|Cog_Jnt|Body_Jnt1|L_Back_Leg_01_Jnt|L_Back_Leg_02_Jnt|L_Back_Leg_03_Jnt|L_Back_Foot_Jnt|L_Back_toe_03_Jnt|aim.is"
+connectAttr "L_Back_toe_03_Jnt.s" "|Spider_Bot|Skeleton|RK_Skeleton|Cog_Jnt|Body_Jnt|L_Back_Leg_01_Jnt|L_Back_Leg_02_Jnt|L_Back_Leg_03_Jnt|L_Back_Foot_Jnt|L_Back_toe_03_Jnt|aim.is"
 		;
 connectAttr "L_Back_Foot_Jnt.s" "L_Back_toe_02_Jnt.is";
-connectAttr "L_Back_toe_02_Jnt.s" "|Spider_Bot|Skeleton|RK_Skeleton|Cog_Jnt|Body_Jnt1|L_Back_Leg_01_Jnt|L_Back_Leg_02_Jnt|L_Back_Leg_03_Jnt|L_Back_Foot_Jnt|L_Back_toe_02_Jnt|aim.is"
+connectAttr "L_Back_toe_02_Jnt.s" "|Spider_Bot|Skeleton|RK_Skeleton|Cog_Jnt|Body_Jnt|L_Back_Leg_01_Jnt|L_Back_Leg_02_Jnt|L_Back_Leg_03_Jnt|L_Back_Foot_Jnt|L_Back_toe_02_Jnt|aim.is"
 		;
 connectAttr "L_Back_Foot_Jnt.s" "L_Back_toe_01_jnt.is";
-connectAttr "L_Back_toe_01_jnt.s" "|Spider_Bot|Skeleton|RK_Skeleton|Cog_Jnt|Body_Jnt1|L_Back_Leg_01_Jnt|L_Back_Leg_02_Jnt|L_Back_Leg_03_Jnt|L_Back_Foot_Jnt|L_Back_toe_01_jnt|aim.is"
+connectAttr "L_Back_toe_01_jnt.s" "|Spider_Bot|Skeleton|RK_Skeleton|Cog_Jnt|Body_Jnt|L_Back_Leg_01_Jnt|L_Back_Leg_02_Jnt|L_Back_Leg_03_Jnt|L_Back_Foot_Jnt|L_Back_toe_01_jnt|aim.is"
 		;
 connectAttr "SpiderBot_Shader.oc" "SpiderBot_SG.ss";
 connectAttr "groupId3.msg" "SpiderBot_SG.gn" -na;
