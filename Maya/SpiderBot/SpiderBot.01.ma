@@ -1,6 +1,6 @@
 //Maya ASCII 2017ff05 scene
 //Name: SpiderBot.01.ma
-//Last modified: Sat, Sep 01, 2018 02:07:00 PM
+//Last modified: Sat, Sep 01, 2018 02:11:42 PM
 //Codeset: 1252
 requires maya "2017ff05";
 requires "stereoCamera" "10.0";
@@ -15,14 +15,14 @@ fileInfo "license" "student";
 createNode transform -s -n "persp";
 	rename -uid "2C7FB34D-47D8-3F54-99F3-53B1CD23A427";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 0.73464898208020202 10.085002041283206 39.918743418969264 ;
-	setAttr ".r" -type "double3" 706.46164723489051 -1072.6000000000452 -3.0068132733700072e-016 ;
+	setAttr ".t" -type "double3" -21.375455349820204 13.318667946981485 10.883319548632848 ;
+	setAttr ".r" -type "double3" 711.26164723476086 -1143.7999999996755 0 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "113807D5-483A-E7F6-4060-27B347736CC2";
 	setAttr -k off ".v" no;
 	setAttr ".pze" yes;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 36.691136640059554;
+	setAttr ".coi" 23.259060652620928;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -8221,6 +8221,7 @@ createNode transform -n "Skeleton" -p "Spider_Bot";
 	rename -uid "03C19D56-4B37-00F0-6D8F-3EAACCB7834E";
 createNode transform -n "RK_Skeleton" -p "Skeleton";
 	rename -uid "18B9BDD5-4FE1-6DFB-1BDF-7888BBD0AB18";
+	setAttr ".v" no;
 createNode joint -n "Cog_Jnt" -p "RK_Skeleton";
 	rename -uid "C42A09F2-41AE-FB2B-0BA9-309566256231";
 	setAttr ".t" -type "double3" 0 12.143377304077148 -0.30431103706359863 ;
@@ -9188,6 +9189,7 @@ createNode joint -n "aim" -p "|Spider_Bot|Skeleton|FK_Skeleton|Cog_FK_Jnt|Body_F
 	setAttr ".radi" 0.3;
 createNode transform -n "IK_Skeleton" -p "Skeleton";
 	rename -uid "1EE6238B-4892-3912-A6FA-B6A6924383EA";
+	setAttr ".v" no;
 createNode joint -n "Cog_IK_Jnt" -p "IK_Skeleton";
 	rename -uid "51D722C9-4838-23C0-EF27-A4B722527D91";
 	setAttr ".t" -type "double3" 0 12.143377304077148 -0.30431103706359863 ;
@@ -9356,6 +9358,63 @@ createNode joint -n "L_Back_Leg_03_IK_Jnt" -p "L_Back_Leg_02_IK_Jnt";
 	setAttr ".radi" 0.5;
 createNode transform -n "Controls" -p "Spider_Bot";
 	rename -uid "E96E5767-4794-6DAF-F8EF-75A1A7AE481C";
+createNode transform -n "Transform_Ctrl_Grp" -p "Controls";
+	rename -uid "CB66DB36-4A22-DB65-607E-3A890F14AE09";
+createNode transform -n "Transform_Ctrl" -p "Controls";
+	rename -uid "6DD8E456-46AF-915F-E5BF-9DAD4FA78626";
+createNode nurbsCurve -n "Transform_CtrlShape" -p "Transform_Ctrl";
+	rename -uid "D850BFF1-493D-1685-BA84-23BABE112DD4";
+	setAttr -k off ".v";
+	setAttr ".tw" yes;
+createNode transform -n "Cog_Ctrl_Grp" -p "Controls";
+	rename -uid "515866C6-4B8E-1DFC-CD08-4EABBE2A0D8C";
+	setAttr ".t" -type "double3" 0 12.143377304077148 -0.30431103706359863 ;
+createNode transform -n "Cog_Ctrl" -p "Cog_Ctrl_Grp";
+	rename -uid "33182D5C-4FD7-AB68-6CA1-5DB2E9B7D68B";
+createNode nurbsCurve -n "Cog_CtrlShape" -p "Cog_Ctrl";
+	rename -uid "D90979E9-4F67-2DA7-070B-0C8A2EE43244";
+	setAttr -k off ".v";
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		6.4573762133579482 3.9540025552895271e-016 -6.4573762133579375
+		-1.0418644459971649e-015 5.5918040393483265e-016 -9.132109018276223
+		-6.4573762133579411 3.9540025552895296e-016 -6.4573762133579411
+		-9.132109018276223 1.620364914711662e-031 -2.6462567261676158e-015
+		-6.4573762133579438 -3.9540025552895286e-016 6.4573762133579393
+		-2.7516826705269769e-015 -5.5918040393483275e-016 9.1321090182762248
+		6.4573762133579375 -3.9540025552895306e-016 6.457376213357942
+		9.132109018276223 -3.003368857658854e-031 4.9048735680359696e-015
+		6.4573762133579482 3.9540025552895271e-016 -6.4573762133579375
+		-1.0418644459971649e-015 5.5918040393483265e-016 -9.132109018276223
+		-6.4573762133579411 3.9540025552895296e-016 -6.4573762133579411
+		;
+createNode transform -n "Body_Ctrl_Grp" -p "Cog_Ctrl";
+	rename -uid "FFCD1B5F-4F2F-13AA-A680-2DA68E9917F0";
+	setAttr ".t" -type "double3" -7.6763777365135612e-017 0 -2.2204460492503131e-016 ;
+createNode transform -n "Body_Ctrl" -p "Body_Ctrl_Grp";
+	rename -uid "CCB382A7-4EF1-BD9A-2190-D6BACE56DCFC";
+	setAttr ".s" -type "double3" 0.88978854416579911 0.88978854416579911 0.88978854416579911 ;
+createNode nurbsCurve -n "Body_CtrlShape" -p "Body_Ctrl";
+	rename -uid "C5C5E0C1-47A8-48A6-0837-1C9A502DC831";
+	setAttr -k off ".v";
+	setAttr ".cc" -type "nurbsCurve" 
+		3 8 2 no 3
+		13 -2 -1 0 1 2 3 4 5 6 7 8 9 10
+		11
+		4.4498506442329084 3.9818831338908076 -5.0835336399867321
+		3.1811139313355263e-016 3.9403270594929873 -5.0304804249515929
+		-4.4498506442329049 3.9818831338908089 -5.083533639986733
+		-4.4034107266830782 1.100507554572528e-015 -1.0719133460792263e-015
+		-4.4498506442329067 -3.9818831338908089 5.0835336399867312
+		-5.0634568414233191e-016 -3.9403270594929891 5.0304804249515938
+		4.4498506442329013 -3.9818831338908098 5.0835336399867339
+		4.4034107266830782 -2.1576579982543924e-015 3.0876748777613471e-015
+		4.4498506442329084 3.9818831338908076 -5.0835336399867321
+		3.1811139313355263e-016 3.9403270594929873 -5.0304804249515929
+		-4.4498506442329049 3.9818831338908089 -5.083533639986733
+		;
 createNode transform -n "Deformers" -p "Spider_Bot";
 	rename -uid "66F79649-4CC8-5B07-2F7F-7AB809CF8BCB";
 createNode shadingEngine -n "SpiderBot_SG";
@@ -9588,6 +9647,14 @@ createNode groupParts -n "groupParts3";
 createNode displayLayer -n "layer1";
 	rename -uid "787EF695-4D19-A400-F690-0B88BA55E47E";
 	setAttr ".do" 1;
+createNode makeNurbCircle -n "makeNurbCircle1";
+	rename -uid "11090C60-4D73-FD24-DE43-2D8845419D13";
+	setAttr ".nr" -type "double3" 0 1 0 ;
+	setAttr ".tol" 0;
+createNode transformGeometry -n "transformGeometry1";
+	rename -uid "39819DA9-4154-7988-EA05-D29B9F337123";
+	setAttr ".txf" -type "matrix" 12.708080756757349 0 0 0 0 12.708080756757349 0 0
+		 0 0 12.708080756757349 0 0 0 0 1;
 select -ne :time1;
 	setAttr ".o" 0;
 select -ne :renderPartition;
@@ -9793,6 +9860,7 @@ connectAttr "L_Middle_Leg_02_IK_Jnt.s" "L_Middle_Leg_03_IK_Jnt.is";
 connectAttr "Body_IK_Jnt.s" "L_Back_Leg_01_IK_Jnt.is";
 connectAttr "L_Back_Leg_01_IK_Jnt.s" "L_Back_Leg_02_IK_Jnt.is";
 connectAttr "L_Back_Leg_02_IK_Jnt.s" "L_Back_Leg_03_IK_Jnt.is";
+connectAttr "transformGeometry1.og" "Transform_CtrlShape.cr";
 connectAttr "SpiderBot_Shader.oc" "SpiderBot_SG.ss";
 connectAttr "groupId3.msg" "SpiderBot_SG.gn" -na;
 connectAttr "SpiderBot_GeoShape.iog.og[0]" "SpiderBot_SG.dsm" -na;
@@ -9845,6 +9913,7 @@ connectAttr "tweak1.msg" "tweakSet1.ub[0]";
 connectAttr "groupParts1.og" "groupParts3.ig";
 connectAttr "groupId5.id" "groupParts3.gi";
 connectAttr "layerManager.dli[1]" "layer1.id";
+connectAttr "makeNurbCircle1.oc" "transformGeometry1.ig";
 connectAttr "SpiderBot_SG.pa" ":renderPartition.st" -na;
 connectAttr "SpiderBot_Shader.msg" ":defaultShaderList1.s" -na;
 connectAttr "SpiderBot_P2D.msg" ":defaultRenderUtilityList1.u" -na;
