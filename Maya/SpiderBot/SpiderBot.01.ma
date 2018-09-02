@@ -1,6 +1,6 @@
 //Maya ASCII 2017ff05 scene
 //Name: SpiderBot.01.ma
-//Last modified: Sat, Sep 01, 2018 03:18:52 PM
+//Last modified: Sat, Sep 01, 2018 03:19:45 PM
 //Codeset: 1252
 requires maya "2017ff05";
 requires "stereoCamera" "10.0";
@@ -15,14 +15,14 @@ fileInfo "license" "student";
 createNode transform -s -n "persp";
 	rename -uid "2C7FB34D-47D8-3F54-99F3-53B1CD23A427";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 1.6098630877294831 18.383613822334148 34.383139054060422 ;
-	setAttr ".r" -type "double3" 695.06164722759149 -1077.8000000001075 -9.9465648292791281e-017 ;
+	setAttr ".t" -type "double3" -2.2143823861174452 27.065931877121038 40.942769586331238 ;
+	setAttr ".r" -type "double3" 689.06164722757751 -1083.4000000000847 1.9913517977432198e-016 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "113807D5-483A-E7F6-4060-27B347736CC2";
 	setAttr -k off ".v" no;
 	setAttr ".pze" yes;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 38.746759867087945;
+	setAttr ".coi" 48.665354185735453;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -9366,6 +9366,8 @@ createNode transform -n "Transform_Ctrl" -p "Transform_Ctrl_Grp";
 createNode nurbsCurve -n "Transform_CtrlShape" -p "Transform_Ctrl";
 	rename -uid "D850BFF1-493D-1685-BA84-23BABE112DD4";
 	setAttr -k off ".v";
+	setAttr ".ove" yes;
+	setAttr ".ovc" 6;
 	setAttr ".tw" yes;
 createNode transform -n "FK_Controls" -p "Controls";
 	rename -uid "F9FB91CA-40C5-1110-208B-AC86897153C5";
