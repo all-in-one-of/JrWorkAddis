@@ -18,7 +18,11 @@ global proc randomizer ()
    randomNumber();
       int $numRand = `randomNumber`;
     setAttr ($Object + ".translateX")$numRand;
+    randomNumber();
+      int $numRand = `randomNumber`;
     setAttr ($Object + ".translateY")$numRand;
+    randomNumber();
+      int $numRand = `randomNumber`;
     setAttr ($Object + ".translateZ")$numRand;
 
         print ($Object + ": ");
@@ -27,5 +31,3 @@ global proc randomizer ()
     
 }
 randomizer();
-
-//This Puts Everything in a line.. Change that.
