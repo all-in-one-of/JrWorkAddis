@@ -143,10 +143,12 @@ rename "pCone6" "Leaves";
 DeleteAllHistory;
 delete -all -constructionHistory;
 
-//Duplicate to make another one.
-select -r Trunk Leaves ;
-duplicate -rr;
-move -r -8.071974 0 0 ;
-rotate -r -os -fo 0 -33.273231 0 ;
+select -r Leaves Trunk ;
+polyUnite -ch 1 -mergeUVSets 1 -centerPivot -name Tree;
+
+//Delete History after
+DeleteAllHistory;
+delete -all -constructionHistory;
+
 
 select -cl  ;
