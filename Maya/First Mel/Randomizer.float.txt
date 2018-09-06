@@ -1,10 +1,3 @@
-global proc MaxMinDet()
-      {
-         int $maxNumEnter = `intField -q -v -ec  MaximumField`;
-         int $minNumEnter = `intField -q -v -ec  MinimumField`;
-         int $numRandom = rand($maxNumEnter, $minNumEnter);
-         print $numRandom;
-      }
 
 global proc randomizer()
 {
@@ -12,20 +5,20 @@ global proc randomizer()
     //make the Selection an array
     string $sel[] = `ls -sl`;
     string $Object;
-    int $maxNumEnter = `intField -q -v -ec  MaximumField`;
-    int $minNumEnter = `intField -q -v -ec  MinimumField`;
-    int $numRandom = rand($maxNumEnter, $minNumEnter);
+    float $maxNumEnter = `floatField -q -v -ec  MaximumField`;
+    float $minNumEnter = `floatField -q -v -ec  MinimumField`;
+    float $numRandom = rand($maxNumEnter, $minNumEnter);
     print $numRandom;
     
     for ($Object in $sel)
         {
-        int $numRandom = rand($maxNumEnter, $minNumEnter);
+        float $numRandom = rand($maxNumEnter, $minNumEnter);
         setAttr ($Object + ".translateX")$numRandom;
         
-        int $numRandom = rand($maxNumEnter, $minNumEnter);
+        float $numRandom = rand($maxNumEnter, $minNumEnter);
         setAttr ($Object + ".translateY")$numRandom;
         
-        int $numRandom = rand($maxNumEnter, $minNumEnter);
+        float $numRandom = rand($maxNumEnter, $minNumEnter);
         setAttr ($Object + ".translateZ")$numRandom;
 
         print ($Object + ": ");
@@ -37,14 +30,14 @@ global proc randomizer()
         {
             string $sel[] = `ls -sl`;
             string $Object;
-            int $maxNumEnter = `intField -q -v -ec  MaximumField`;
-            int $minNumEnter = `intField -q -v -ec  MinimumField`;
-            int $numRandom = rand($maxNumEnter, $minNumEnter);
+            float $maxNumEnter = `floatField -q -v -ec  MaximumField`;
+            float $minNumEnter = `floatField -q -v -ec  MinimumField`;
+            float $numRandom = rand($maxNumEnter, $minNumEnter);
             print $numRandom;
             
             for ($Object in $sel)
                 {
-                int $numRandom = rand($maxNumEnter, $minNumEnter);
+                float $numRandom = rand($maxNumEnter, $minNumEnter);
                 setAttr ($Object + ".translateX")$numRandom;
         
                 print ($Object + ": ");
@@ -56,14 +49,14 @@ global proc randomizer()
         {
             string $sel[] = `ls -sl`;
             string $Object;
-            int $maxNumEnter = `intField -q -v -ec  MaximumField`;
-            int $minNumEnter = `intField -q -v -ec  MinimumField`;
-            int $numRandom = rand($maxNumEnter, $minNumEnter);
+            float $maxNumEnter = `floatField -q -v -ec  MaximumField`;
+            float $minNumEnter = `floatField -q -v -ec  MinimumField`;
+            float $numRandom = rand($maxNumEnter, $minNumEnter);
             print $numRandom;
             
             for ($Object in $sel)
                 {
-                int $numRandom = rand($maxNumEnter, $minNumEnter);
+                float $numRandom = rand($maxNumEnter, $minNumEnter);
                 setAttr ($Object + ".translateY")$numRandom;
         
                 print ($Object + ": ");
@@ -75,14 +68,14 @@ global proc randomizer()
         {
             string $sel[] = `ls -sl`;
             string $Object;
-            int $maxNumEnter = `intField -q -v -ec  MaximumField`;
-            int $minNumEnter = `intField -q -v -ec  MinimumField`;
-            int $numRandom = rand($maxNumEnter, $minNumEnter);
+            float $maxNumEnter = `floatField -q -v -ec  MaximumField`;
+            float $minNumEnter = `floatField -q -v -ec  MinimumField`;
+            float $numRandom = rand($maxNumEnter, $minNumEnter);
             print $numRandom;
             
             for ($Object in $sel)
                 {
-                int $numRandom = rand($maxNumEnter, $minNumEnter);
+                float $numRandom = rand($maxNumEnter, $minNumEnter);
                 setAttr ($Object + ".translateZ")$numRandom;
         
                 print ($Object + ": ");
@@ -95,9 +88,9 @@ global proc randomizerScale()
 {
     string $sel[] = `ls -sl`;
     string $Object;
-    int $maxNumEnter = `intField -q -v -ec  MaximumField`;
-    int $minNumEnter = `intField -q -v -ec  MinimumField`;
-    int $numRandom = rand($maxNumEnter, $minNumEnter);
+    float $maxNumEnter = `floatField -q -v -ec  MaximumField`;
+    float $minNumEnter = `floatField -q -v -ec  MinimumField`;
+    float $numRandom = rand($maxNumEnter, $minNumEnter);
     print $numRandom;
     
     for ($Object in $sel)
@@ -107,7 +100,7 @@ global proc randomizerScale()
         setAttr ($Object + ".scaleY")$numRandom;
         setAttr ($Object + ".scaleZ")$numRandom;
         print ($Object + ": ");
-        print (getAttr($Object + ".translateX") + ", " + getAttr($Object + ".translateY") + ", " + getAttr($Object + ".translateZ") + "." + "\n");
+        print (getAttr($Object + ".scaleX") + ", " + getAttr($Object + ".scaleY") + ", " + getAttr($Object + ".scaleZ") + "." + "\n");
     }
 }
 
@@ -115,8 +108,8 @@ global proc RandomValues()
     {
         window MaxAndMinWin;
         columnLayout;
-        intField MaximumField;
-        intField MinimumField;
+        floatField MaximumField;
+        floatField MinimumField;
         button -label "Randomize Translate All Axis'" -command "randomizer";
         button -label "Randomize Translate X" -command "randomizerX";
         button -label "Randomize Translate Y" -command "randomizerY";
@@ -125,8 +118,8 @@ global proc RandomValues()
         button -label "Randomize Scale" -command "randomizerScale";
         showWindow MaxAndMinWin;
         
-        int $maxNumEnter;
-        int $minNumEnter;
+        float $maxNumEnter;
+        float $minNumEnter;
 } 
 
 RandomValues();
