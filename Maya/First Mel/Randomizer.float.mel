@@ -12,7 +12,7 @@ global proc randomizer()
     print $numRandom;
     
     for ($Object in $sel)
-        {
+    {
         float $numRandom = rand($maxNumEnter, $minNumEnter);
         setAttr ($Object + ".translateX")$numRandom;
         
@@ -23,7 +23,7 @@ global proc randomizer()
         setAttr ($Object + ".translateZ")$numRandom;
 
         print ($Object + ": ");
-         print (getAttr($Object + ".translateX") + ", " + getAttr($Object + ".translateY") + ", " + getAttr($Object + ".translateZ") + "." + "\n");
+        print (getAttr($Object + ".translateX") + ", " + getAttr($Object + ".translateY") + ", " + getAttr($Object + ".translateZ") + "." + "\n");
     }
     
 }
@@ -104,6 +104,31 @@ global proc randomizerScale()
         print (getAttr($Object + ".scaleX") + ", " + getAttr($Object + ".scaleY") + ", " + getAttr($Object + ".scaleZ") + "." + "\n");
     }
 }
+global proc randomizerRotate()
+{
+    string $sel[] = `ls -sl`;
+    string $Object;
+    float $maxNumEnter = 359;
+    float $minNumEnter = 0;
+    float $numRandom = rand($maxNumEnter, $minNumEnter);
+    print $numRandom;
+    
+    for ($Object in $sel)
+        {
+       float $numRandom = rand($maxNumEnter, $minNumEnter);
+        setAttr ($Object + ".rotateX")$numRandom;
+        
+        float $numRandom = rand($maxNumEnter, $minNumEnter);
+        setAttr ($Object + ".rotateY")$numRandom;
+        
+        float $numRandom = rand($maxNumEnter, $minNumEnter);
+        setAttr ($Object + ".rotateZ")$numRandom;
+		
+        print ($Object + ": ");
+        print (getAttr($Object + ".rotateX") + ", " + getAttr($Object + ".rotateY") + ", " + getAttr($Object + ".rotateZ") + "." + "\n");
+    }
+}
+
 
 global proc RandomValues()
     {
@@ -116,7 +141,8 @@ global proc RandomValues()
         button -label "Randomize Translate X" -command "randomizerX";
         button -label "Randomize Translate Y" -command "randomizerY";
         button -label "Randomize Translate Z" -command "randomizerZ";
-        
+		
+		button -label "Randomize Rotation" -command "randomizerRotate";
         button -label "Randomize Scale" -command "randomizerScale";
         showWindow MaxAndMinWin;
         
