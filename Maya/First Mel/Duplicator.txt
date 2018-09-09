@@ -1,0 +1,26 @@
+global proc Duplicator()
+    {
+        window DuplicationWindow;
+        columnLayout;
+        scrollField -wordWrap true -height 60
+					-text "Select object, In the number spot put how many times to duplicate and press 'Duplicate this Many Times!'" -editable false;
+	    intField NumberField;
+        button -label "Duplicate this Many Times" -command "setValInt";
+		scrollField -wordWrap true -height 60
+					-text "Remember, put one less than the total you want because you already have one" -editable false;
+        showWindow DuplicationWindow;
+        
+        int $duplicateNumber;
+    } 
+    global proc setValInt()
+        {
+           int $i;
+           int $DetDupNum = `intField -query -value NumberField`;
+           print $DetDupNum;
+           for( $i=0; $i<$DetDupNum; ++$i )
+           {
+               duplicate -rr;
+           }
+        } 
+
+Duplicator();
