@@ -1,0 +1,26 @@
+global proc Selection()
+{
+    string $sels[] = `ls -sl`;
+    string $object;
+    $arraySize = size($sels);
+    
+    print ("Array Size " + $arraySize + "\n");
+    for($object in $sels)
+    {
+        print ("this object is " +$object + "\n");
+    }
+}
+
+global proc Renaming(string $splitThis)
+{
+	string $name[];
+	tokenize $splitThis "_" $name;
+	
+	print ($splitThis + "\n");
+	print ($name);
+
+}
+string $stringToSplit = "Name_##_Suffix";
+
+Selection();
+Renaming($stringToSplit);
