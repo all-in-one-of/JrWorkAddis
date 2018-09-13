@@ -1,4 +1,4 @@
-global proc Selection(string $p1,string $p3)
+global proc Selection(string $p1,string $p2)
 {
     //Grab selection and init $object
     string $sels[] = `ls -sl`;
@@ -8,8 +8,12 @@ global proc Selection(string $p1,string $p3)
     $arraySize = size($sels);
     print ("Objects Selected " + $arraySize + "\n");
     
+    //assign p1 and p2 to strings
     string $newname = $p1;
-    string $newSuffix = $p3;
+    string $newSuffix = $p2;
+    
+    //this int is going to be the incramenting number for use in Incrementor
+    int $number = 01;
     
     // For each object in the selection do this:
     for($object in $sels)
@@ -19,38 +23,43 @@ global proc Selection(string $p1,string $p3)
         //run func here to generate name
         
         //assign new name here.
-        rename ($newname + $newSuffix);
+        rename $object($newname + $newSuffix);
         
-        print ("this object is now " + $p1 + " " + $p3 + "\n");
+        print ("this object is now " + $p1 + " " + $p2 + "\n");
     }
 }
 
 global proc Renaming(string $splitThis)
 {
+    //take input and tokenize it.
 	string $name[];
-	tokenize $splitThis "_" $name;
+	tokenize $splitThis "#" $name;
 	
 	//assign strings to each part of array
 	string $part1 = $name[0];
 	string $part2 = $name[1];
-	string $part3 = $name[2];
 	
 	print ($splitThis + "\n");
 	print ($part1+ "\n");
 	print ($part2+ "\n");
-	print ($part3+ "\n");
 	
 	//return $part1;
 	
 	//Call Selection Function
-    Selection($part1,$part3);
+    Selection($part1,$part2);
 
 }
 
-string $stringToSplit = "Namepart_01_Jnt";
+//Middle Number Incrementer
+/*global proc Incrementor(int $number)
+{
+    $number 
+}
+*/
+string $stringToSplit = "Name_#_Jasdfasdnt";
 string $outputString;
 
-
+//Call Renaming
 Renaming($stringToSplit);
 
 
