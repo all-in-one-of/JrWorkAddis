@@ -13,19 +13,20 @@ global proc Selection(string $p1,string $p2)
     string $newSuffix = $p2;
     
     //this int is going to be the incramenting number for use in Incrementor
-    int $number = 01;
+    int $newNumber = 00;
     
+           
     // For each object in the selection do this:
     for($object in $sels)
     {
         print ("this object was " +$object + "\n");
         
-        //run func here to generate name
-        
+        // generate number
+        $newNumber++;
         //assign new name here.
-        rename $object($newname + $newSuffix);
+        rename $object($newname + $newNumber + $newSuffix);
         
-        print ("this object is now " + $p1 + " " + $p2 + "\n");
+        print ("this object is now " + $p1 + $newNumber + $p2 + "\n");
     }
 }
 
@@ -50,16 +51,8 @@ global proc Renaming(string $splitThis)
 
 }
 
-//Middle Number Incrementer
-/*global proc Incrementor(int $number)
-{
-    $number 
-}
-*/
-string $stringToSplit = "Name_#_Jasdfasdnt";
-string $outputString;
+string $stringToSplit = "Bone_#_Jnasdflj;at";
+
 
 //Call Renaming
 Renaming($stringToSplit);
-
-
