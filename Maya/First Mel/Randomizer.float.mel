@@ -133,6 +133,9 @@ global proc randomizerRotate()
 global proc RandomValues()
     {
 		//Make a window with enterable min and max values, and buttons that run certain scripts with the random number
+        //Check if window with this name exists delete window if so
+        if (`window -exists MaxAndMinWin`) deleteUI -window MaxAndMinWin;
+        
         window MaxAndMinWin;
         columnLayout;
         floatField MaximumField;
