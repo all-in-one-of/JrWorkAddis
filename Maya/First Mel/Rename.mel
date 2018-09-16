@@ -61,7 +61,7 @@ columnLayout;
 //i'm using uneditable fields to give instruction
 text -label "Renaming Rules";
 scrollField -wordWrap true -height 60 -text "This will rename all selected items based off of the name of the first name you enter here" -editable false;
-scrollField -wordWrap true -height 60 -text "Split your new name with a # in between first half and last half, example below" -editable false;
+scrollField -wordWrap true -height 60 -text "Type the name you want with a '#' in between first half and last half, EXAMPLE BELOW" -editable false;
 
 //now this is what the user enters ast the first option. the renamer will calculate the rest.
 string $userInput = `textFieldGrp -label "Renamer" -text "firstPart # LastPart"`;
