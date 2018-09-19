@@ -1,4 +1,4 @@
-global proc Selection(string $p1,string $p2)
+global proc Selection(string $p1,string $p2,int $numbPad)
 {
     //Grab selection and init $object
     string $sels[] = `ls -sl`;
@@ -14,7 +14,9 @@ global proc Selection(string $p1,string $p2)
     
     //this int is going to be the incramenting number for use in Incrementor
     int $newNumber = 00;
-    
+    string $zero = "0";
+    int $numbPadd = $numbPad;
+   
            
     // For each object in the selection do this:
     for($object in $sels)
@@ -22,9 +24,17 @@ global proc Selection(string $p1,string $p2)
         print ("this object was " +$object + "\n");
         
         // generate number
+        if ($numbPadd > 1 && $newNumber <10)
+        {
+        rename $object($newname + $zero + $newNumber + $newSuffix);
+        print ("this object is now " + $p1 + $newNumber + $p2 + "\n");
         $newNumber++;
-        //assign new name here.
+        }
+        else
+        {
+        $newNumber++;
         rename $object($newname + $newNumber + $newSuffix);
+        }
         
         print ("this object is now " + $p1 + $newNumber + $p2 + "\n");
     }
@@ -44,14 +54,23 @@ global proc Renaming(string $splitThis)
 	print ($part1+ "\n");
 	print ($part2+ "\n");
 	
-	//return $part1;
+	//get the sizes
+    $stringSize = size($splitThis);
+    print("The whole string size" + $stringSize);
+    int $noPadChars = size($part1) + size($part2);
+    print("the letter characters" + $noPadChars);
+    int $numberPadding = $stringSize - $noPadChars;
+    print("The Padding is" + $numberPadding);
+    
+
+    
 	
 	//Call Selection Function
-    Selection($part1,$part2);
+    Selection($part1,$part2,$numberPadding);
 
 }
 //init default string
-string $stringToSplit = "De#_fault";
+string $stringToSplit;
 //Check if window with this name exists delete window if so
 if (`window -exists RenameWindow`) deleteUI -window RenameWindow;
 
@@ -64,7 +83,7 @@ scrollField -wordWrap true -height 60 -text "This will rename all selected items
 scrollField -wordWrap true -height 60 -text "Type the name you want with a '#' in between first half and last half, EXAMPLE BELOW" -editable false;
 
 //now this is what the user enters ast the first option. the renamer will calculate the rest.
-string $userInput = `textFieldGrp -label "Renamer" -text "firstPart # LastPart"`;
+string $userInput = `textFieldGrp -label "Renamer" -text "firstPart_#_LastPart"`;
 button -label "Print Text" -command ("string $currentUsersInput = `textFieldGrp -q -text $userInput`; print($currentUsersInput)");   
 print ($stringToSplit);
 
