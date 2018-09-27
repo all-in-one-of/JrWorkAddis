@@ -1,13 +1,68 @@
-global proc CreateCtrls(int $color)
+global proc string ControlTypes(string $shape)
+{
+    // create ctrl
+    string $ctrls[] = `circle -c 0 0 0 -nr 0 1 0 -sw 360 -r 1 -d 3 -ut 0 -tol 0.0001 -s 8 -ch 1`;
+    
+
+    if($shape == "Circle"){}
+    else if ($shape == "Diamond")
+    {
+        select -r nurbsCircle1.ep[3] ;
+        select -tgl nurbsCircle1.ep[1] ;
+        select -tgl nurbsCircle1.ep[5] ;
+        select -tgl nurbsCircle1.ep[7] ;
+        scale -r -p 0cm 0cm 0cm 0.457082 0.457082 0.457082 ;
+        
+    }
+     else if ($shape == "Square")
+    {
+        select -r nurbsCircle1.ep[5] ;
+        select -tgl nurbsCircle1.ep[3] ;
+        select -tgl nurbsCircle1.ep[1] ;
+        select -tgl nurbsCircle1.ep[7] ;
+        scale -r -p 0cm 0cm 0cm 1.383957 1.383957 1.383957 ;
+       
+    }
+       else if ($shape == "Flower")
+    {
+        select -r nurbsCircle1.ep[5] ;
+        select -tgl nurbsCircle1.ep[7] ;
+        select -tgl nurbsCircle1.ep[1] ;
+        select -tgl nurbsCircle1.ep[3] ;
+        scale -r -p 0cm 0cm 0cm 0.0802752 0.0802752 0.0802752 ;
+       
+    }
+    return $ctrls[0];
+}
+
+global proc CreateCtrls(int $color, string $shapeName)
 {
     string $sels[] = `ls -sl`;
-    
-    for ($sel in $sels){
-        string $ctrls[] = `circle -name ($sel + "_Ctrl")`;
-        group -name ($sel + "_Ctrl_Grp") $ctrls;
-        string $ctrl = $ctrls[0];
-        matchTransform $ctrls $sel;
-        ColorControls($ctrl, $color);
+    if (size($sels)>0)
+    {
+    for ($sel in $sels)
+        {
+        // create ctrl by calling control types
+        string $ctrl = ControlTypes($shapeName);
+
+        // rename
+        string $renameCtrl = `rename $ctrl ($sel + "_Ctrl")`;
+        //create and name ctrl group
+        string $groupies = `group -world -name ($renameCtrl + "_Grp") $renameCtrl`;
+
+        //grab name for use in changing the color
+        ColorControls($renameCtrl, $color);
+
+        matchTransform $groupies $sel;
+        }
+    }
+    else
+    {
+        warning("Nothing selected Creating control and group at orgin");
+       string $ctrl = ControlTypes($shapeName);
+       //create and name ctrl group
+       string $renameCtrl = `rename $ctrl "_Ctrl"`;
+       string $groupies = `group -world -name ($renameCtrl + "_Grp") $renameCtrl`;
     }
 }
 
@@ -41,4 +96,4 @@ global proc ColorControls(string $ctrl, int $color)
 }
 
 
-CreateCtrls(14);
+CreateCtrls(19,"Flower");
