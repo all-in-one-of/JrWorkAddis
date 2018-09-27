@@ -4,7 +4,9 @@ global proc CreateCtrls(int $color)
     
     for ($sel in $sels){
         string $ctrls[] = `circle -name ($sel + "_Ctrl")`;
+        group -name ($sel + "_Ctrl_Grp") $ctrls;
         string $ctrl = $ctrls[0];
+        matchTransform $ctrls $sel;
         ColorControls($ctrl, $color);
     }
 }
