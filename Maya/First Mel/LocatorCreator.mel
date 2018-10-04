@@ -1,9 +1,3 @@
-/*
-Psudo Code
-bb= bounding box
-
-*/
-
 global proc CenterLocatidor()
 {
     //Select objects, string $sels[]=`ls -sl`;
