@@ -1,3 +1,72 @@
+global proc toolBoxMenu()
+{
+        if (`window -exists "Toolbox"`)
+        {
+             deleteUI -window "Toolbox";
+        }
+        else
+        {
+            string $toolWindow = "ToolBoxWindow";
+            string $toolWindow = `window -title "Toolbox" $toolWindow`;
+            string $initialCol = `columnLayout -parent $toolWindow -adjustableColumn 1`;
+                scrollField -wordWrap true -width 150 -height 60 -text "Now Select the script you wish to exicute." -editable false;
+
+                button -label "Duplicator" -command ("Duplication()");
+                button -label "Create Locator at Center of selected objects" -command ("CenterLocatidor()");
+                button -label "Control Creator" -command ("ControlCreation()");
+                button -label "Make Group w/ Matched transforms" -command ("ParentGroup()");
+                                        
+            setParent ..;
+            showWindow $toolWindow;
+        }
+}
+toolBoxMenu();
+
+global proc Duplication()
+{
+    string $sels[] = `ls -sl`;
+    string $object;
+    $arraySize = size($sels);
+    
+    print ("Array Size " + $arraySize + "\n");
+    for($object in $sels)
+    {
+        duplicate;
+       
+    }
+}
+
+global proc CenterLocatidor()
+{
+    //Select objects, string $sels[]=`ls -sl`;
+    string $sels[] = `ls -sl`;
+
+    string $temp[] = `duplicate -rr $sels`;
+    //check if more than one object is selected.
+    if (size($temp) > 1)
+        $temp = `polyUnite $temp`;
+
+    float $bbPos[];
+
+    // questy bb min and max values for temp object and assign to float array
+    $bbPos = `xform -q -boundingBox $temp`;
+    //delete custruction history
+    delete -constructionHistory $temp[0];
+    //delete temp object
+    delete $temp[0];
+    
+    // find center of x, y, and z coordinates of bb
+    float $xPos, $yPos, $zPos;
+    $xPos = ($bbPos[0]+$bbPos[3]) /2;
+    $yPos = ($bbPos[1]+$bbPos[4]) /2;
+    $zPos = ($bbPos[2]+$bbPos[5]) /2;
+
+    // create a locater at 0,0,0
+    string $locate[] = `spaceLocator -name "TempLocator" -position 0 0 0`;
+    // move the locator to world space pos of center of bb
+    xform -translation $xPos $yPos $zPos -worldSpace -absolute $locate[0];
+}
+
 global proc string ControlTypes(string $shape)
 {
     // create ctrl
@@ -126,5 +195,27 @@ global proc ControlCreation()
     setParent ..;
     showWindow $window;
 }
-ControlCreation();
+global proc ParentGroup()
+{
+    string $sels[] = `ls -sl`;
+    
+    for ($sel in $sels)
+    {
+        string $parent[] = `listRelatives -parent -fullPath $sel`;
+        
+        string $grp = `group -empty -name ($sel + "_Grp")`;
+        matchTransform $grp $sel;
+        parent $sel $grp;
+        
+        
+        if (size($parent) >0 )
+            print ($grp + "_" + $parent[0]);
+            parent $grp $parent[0];
+    }
+}
+
+
+
+
+
 
