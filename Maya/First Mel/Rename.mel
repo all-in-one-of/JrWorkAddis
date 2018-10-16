@@ -69,29 +69,30 @@ global proc Renaming(string $splitThis)
     Selection($part1,$part2,$numberPadding);
 
 }
-//init default string
-string $stringToSplit;
-//Check if window with this name exists delete window if so
-if (`window -exists RenameWindow`) deleteUI -window RenameWindow;
+global proc RenamingWindow()
+{
+    //init default string
+        string $stringToSplit;
+    //Check if window with this name exists delete window if so
+        if (`window -exists RenameWindow`) deleteUI -window RenameWindow;
 
-//make new window 
-window RenameWindow;
-columnLayout;
-//i'm using uneditable fields to give instruction
-text -label "Renaming Rules";
-scrollField -wordWrap true -height 60 -text "This will rename all selected items based off of the name of the first name you enter here" -editable false;
-scrollField -wordWrap true -height 60 -text "Type the name you want with a '#' in between first half and last half, EXAMPLE BELOW" -editable false;
+    //make new window 
+        window RenameWindow;
+        columnLayout;
+    //i'm using uneditable fields to give instruction
+        text -label "Renaming Rules";
+        scrollField -wordWrap true -height 60 -text "This will rename all selected items based off of the name of the first name you enter here" -editable false;
+        scrollField -wordWrap true -height 60 -text "Type the name you want with a '#' in between first half and last half, EXAMPLE BELOW" -editable false;
 
-//now this is what the user enters ast the first option. the renamer will calculate the rest.
-string $userInput = `textFieldGrp -label "Renamer" -text "firstPart_#_LastPart"`;
-button -label "Print Text" -command ("string $currentUsersInput = `textFieldGrp -q -text $userInput`; print($currentUsersInput)");   
-print ($stringToSplit);
+    //now this is what the user enters ast the first option. the renamer will calculate the rest.
+        string $userInput = `textFieldGrp -label "Renamer" -text "firstPart_#_LastPart"`;
+        button -label "Print Text" -command ("string $currentUsersInput = `textFieldGrp -q -text $userInput`; print($currentUsersInput)");   
+        print ($stringToSplit);
 
-//Call Renaming with this button by getting what the user put in. assigning it to the string to split and running rename.
-button -label "Rename all Selected" -command ("$stringToSplit = `textFieldGrp -q -text $userInput`; string $currentUsersInput = `textFieldGrp -q -text $userInput`; Renaming($stringToSplit)");
+    //Call Renaming with this button by getting what the user put in. assigning it to the string to split and running rename.
+        button -label "Rename all Selected" -command ("$stringToSplit = `textFieldGrp -q -text $userInput`; string $currentUsersInput = `textFieldGrp -q -text $userInput`; Renaming($stringToSplit)");
 
-showWindow RenameWindow;
+        showWindow RenameWindow;
+}
 
-
-//Call Renaming
-//Renaming($stringToSplit);
+RenamingWindow();

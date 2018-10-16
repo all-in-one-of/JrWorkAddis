@@ -1,39 +1,29 @@
 global proc toolBoxMenu()
 {
-        if (`window -exists "Toolbox"`)
-        {
-             deleteUI -window "Toolbox";
-        }
-        else
-        {
-            string $toolWindow = "ToolBoxWindow";
-            string $toolWindow = `window -title "Toolbox" $toolWindow`;
+        if (`window -exists "toolBoxMenu"`) deleteUI -window "toolBoxMenu";
+        
+            string $toolWindow = "toolBoxMenu";
+            string $toolWindow = `window -title "toolBoxMenu" $toolWindow`;
             string $initialCol = `columnLayout -parent $toolWindow -adjustableColumn 1`;
                 scrollField -wordWrap true -width 150 -height 60 -text "Now Select the script you wish to exicute." -editable false;
 
-                button -label "Duplicator" -command ("Duplication()");
-                button -label "Create Locator at Center of selected objects" -command ("CenterLocatidor()");
-                button -label "Control Creator" -command ("ControlCreation()");
+                button -label "Duplicate Selected" -command ("Duplication()");
+                button -label "Create Locator (at Center of selected objects)" -command ("CenterLocatidor()");
+                button -label "Open Control Creator Window" -command ("ControlCreation()");
                 button -label "Make Group w/ Matched transforms" -command ("ParentGroup()");
-                                        
+                button -label "Open Parent Constraint W/ Options window" -command ("Menu()");
+                button -label "Open Renaming Window" -command ("RenamingWindow()");
+                button -label "Open Randomizer Window" -command ("RandomValues()");
+                                                        
             setParent ..;
             showWindow $toolWindow;
-        }
+        
 }
 toolBoxMenu();
 
 global proc Duplication()
 {
-    string $sels[] = `ls -sl`;
-    string $object;
-    $arraySize = size($sels);
-    
-    print ("Array Size " + $arraySize + "\n");
-    for($object in $sels)
-    {
-        duplicate;
-       
-    }
+    duplicate; 
 }
 
 global proc CenterLocatidor()
@@ -164,11 +154,10 @@ global proc ColorControls(string $ctrl, int $color)
     }
 }
 
-//Here we make the button
 global proc ControlCreation()
 {
-        if (`window -exists "Control Creator"`) deleteUI -window "ControlCreator";
-    string $window = `window -title "Control Creator"
+        if (`window -exists "ControlCreator"`) deleteUI -window "ControlCreator";
+    string $window = `window -title "ControlCreator"
            -widthHeight 200 555`;    
         columnLayout;
             string $FlowerShape = "Flower";
@@ -194,7 +183,10 @@ global proc ControlCreation()
            button -label "Close" -command ("deleteUI -window " + $window);
     setParent ..;
     showWindow $window;
+
 }
+
+
 global proc ParentGroup()
 {
     string $sels[] = `ls -sl`;
@@ -214,8 +206,285 @@ global proc ParentGroup()
     }
 }
 
+global proc SkipTranslater()
+{
+    parentConstraint -mo -st x -st y -st z;
+}
+
+global proc SkipRotater()
+{
+    parentConstraint -mo -sr x -sr y -sr z;
+}
+global proc RegularParent()
+{
+    parentConstraint -mo;
+}
+
+global proc Menu()
+{
+    if (`window -exists "PamMenu"`) deleteUI -window "PamMenu";
+               
+            string $toolWindow = "PamMenu";
+            string $toolWindow = `window -title "PamMenu" $toolWindow`;
+            string $initialCol = `columnLayout -parent $toolWindow -adjustableColumn 1`;
+                scrollField -wordWrap true -width 150 -height 60 -text "Now Select the script you wish to exicute." -editable false;
+
+                button -label "Parent (Skip Rotate)" -command ("SkipRotater()");
+                button -label "Parent (Skip Translate)" -command ("SkipTranslater()");
+                button -label "Parent" -command ("RegularParent()");
+                                        
+            setParent ..;
+            showWindow $toolWindow;
+        
+}
+
+global proc Selection(string $p1,string $p2,int $numbPad)
+{
+    //Grab selection and init $object
+    string $sels[] = `ls -sl`;
+    string $object;
+    
+    //Get and print the Array size
+    $arraySize = size($sels);
+    print ("Objects Selected " + $arraySize + "\n");
+    
+    //assign p1 and p2 to strings
+    string $newname = $p1;
+    string $newSuffix = $p2;
+    
+    //this int is going to be the incramenting number for use in Incrementor
+    int $newNumber = 00;
+    string $zero = "0";
+    int $numbPadd = $numbPad;
+   
+           
+    // For each object in the selection do this:
+    for($object in $sels)
+    {
+        print ("this object was " +$object + "\n");
+        
+        // generate number
+        if ($numbPadd > 1 && $newNumber <10)
+        {
+        rename $object($newname + $zero + $newNumber + $newSuffix);
+        print ("this object is now " + $p1 + $newNumber + $p2 + "\n");
+        $newNumber++;
+        }
+        else
+        {
+        $newNumber++;
+        rename $object($newname + $newNumber + $newSuffix);
+        }
+        
+        print ("this object is now " + $p1 + $newNumber + $p2 + "\n");
+    }
+}
+
+global proc Renaming(string $splitThis)
+{
+    //take input and tokenize it.
+	string $name[];
+	tokenize $splitThis "#" $name;
+	
+	//assign strings to each part of array
+	string $part1 = $name[0];
+	string $part2 = $name[1];
+	
+	print ($splitThis + "\n");
+	print ($part1+ "\n");
+	print ($part2+ "\n");
+	
+	//get the sizes
+    $stringSize = size($splitThis);
+    print("The whole string size" + $stringSize);
+    int $noPadChars = size($part1) + size($part2);
+    print("the letter characters" + $noPadChars);
+    int $numberPadding = $stringSize - $noPadChars;
+    print("The Padding is" + $numberPadding);
+    
+
+    
+	
+	//Call Selection Function
+    Selection($part1,$part2,$numberPadding);
+
+}
+global proc RenamingWindow()
+{
+    //init default string
+        string $stringToSplit;
+    //Check if window with this name exists delete window if so
+        if (`window -exists RenameWindow`) deleteUI -window RenameWindow;
+
+    //make new window 
+        window RenameWindow;
+        columnLayout;
+    //i'm using uneditable fields to give instruction
+        text -label "Renaming Rules";
+        scrollField -wordWrap true -height 60 -text "This will rename all selected items based off of the name of the first name you enter here" -editable false;
+        scrollField -wordWrap true -height 60 -text "Type the name you want with a '#' in between first half and last half, EXAMPLE BELOW" -editable false;
+
+    //now this is what the user enters ast the first option. the renamer will calculate the rest.
+        string $userInput = `textFieldGrp -label "Renamer" -text "firstPart_#_LastPart"`;
+        button -label "Print Text" -command ("string $currentUsersInput = `textFieldGrp -q -text $userInput`; print($currentUsersInput)");   
+        print ($stringToSplit);
+
+    //Call Renaming with this button by getting what the user put in. assigning it to the string to split and running rename.
+        button -label "Rename all Selected" -command ("$stringToSplit = `textFieldGrp -q -text $userInput`; string $currentUsersInput = `textFieldGrp -q -text $userInput`; Renaming($stringToSplit)");
+
+        showWindow RenameWindow;
+}
+global proc randomizer()
+{
+            
+    //make the Selection an array
+    string $sel[] = `ls -sl`;
+    string $Object;
+	// the fields from the window entered as these.
+    float $maxNumEnter = `floatField -q -v -ec  MaximumField`;
+    float $minNumEnter = `floatField -q -v -ec  MinimumField`;
+    float $numRandom = rand($maxNumEnter, $minNumEnter);
+    print $numRandom;
+    
+    for ($Object in $sel)
+    {
+        float $numRandom = rand($maxNumEnter, $minNumEnter);
+        setAttr ($Object + ".translateX")$numRandom;
+        
+        float $numRandom = rand($maxNumEnter, $minNumEnter);
+        setAttr ($Object + ".translateY")$numRandom;
+        
+        float $numRandom = rand($maxNumEnter, $minNumEnter);
+        setAttr ($Object + ".translateZ")$numRandom;
+
+        print ($Object + ": ");
+        print (getAttr($Object + ".translateX") + ", " + getAttr($Object + ".translateY") + ", " + getAttr($Object + ".translateZ") + "." + "\n");
+    }
+    
+}
+        global proc randomizerX()
+        {
+            string $sel[] = `ls -sl`;
+            string $Object;
+            float $maxNumEnter = `floatField -q -v -ec  MaximumField`;
+            float $minNumEnter = `floatField -q -v -ec  MinimumField`;
+            float $numRandom = rand($maxNumEnter, $minNumEnter);
+            print $numRandom;
+            
+            for ($Object in $sel)
+                {
+                float $numRandom = rand($maxNumEnter, $minNumEnter);
+                setAttr ($Object + ".translateX")$numRandom;
+        
+                print ($Object + ": ");
+                 print (getAttr($Object + ".translateX") + ", " + getAttr($Object + ".translateY") + ", " + getAttr($Object + ".translateZ") + "." + "\n");
+            }
+            
+        }
+        global proc randomizerY()
+        {
+            string $sel[] = `ls -sl`;
+            string $Object;
+            float $maxNumEnter = `floatField -q -v -ec  MaximumField`;
+            float $minNumEnter = `floatField -q -v -ec  MinimumField`;
+            float $numRandom = rand($maxNumEnter, $minNumEnter);
+            print $numRandom;
+            
+            for ($Object in $sel)
+                {
+                float $numRandom = rand($maxNumEnter, $minNumEnter);
+                setAttr ($Object + ".translateY")$numRandom;
+        
+                print ($Object + ": ");
+                 print (getAttr($Object + ".translateX") + ", " + getAttr($Object + ".translateY") + ", " + getAttr($Object + ".translateZ") + "." + "\n");
+            }
+            
+        }
+        global proc randomizerZ()
+        {
+            string $sel[] = `ls -sl`;
+            string $Object;
+            float $maxNumEnter = `floatField -q -v -ec  MaximumField`;
+            float $minNumEnter = `floatField -q -v -ec  MinimumField`;
+            float $numRandom = rand($maxNumEnter, $minNumEnter);
+            print $numRandom;
+            
+            for ($Object in $sel)
+                {
+                float $numRandom = rand($maxNumEnter, $minNumEnter);
+                setAttr ($Object + ".translateZ")$numRandom;
+        
+                print ($Object + ": ");
+                 print (getAttr($Object + ".translateX") + ", " + getAttr($Object + ".translateY") + ", " + getAttr($Object + ".translateZ") + "." + "\n");
+            }
+            
+        }
+
+global proc randomizerScale()
+{
+    string $sel[] = `ls -sl`;
+    string $Object;
+    float $maxNumEnter = `floatField -q -v -ec  MaximumField`;
+    float $minNumEnter = `floatField -q -v -ec  MinimumField`;
+    float $numRandom = rand($maxNumEnter, $minNumEnter);
+    print $numRandom;
+    
+    for ($Object in $sel)
+        {
+        int $numRandom = rand($maxNumEnter, $minNumEnter);
+        setAttr ($Object + ".scaleX")$numRandom;       
+        setAttr ($Object + ".scaleY")$numRandom;
+        setAttr ($Object + ".scaleZ")$numRandom;
+        print ($Object + ": ");
+        print (getAttr($Object + ".scaleX") + ", " + getAttr($Object + ".scaleY") + ", " + getAttr($Object + ".scaleZ") + "." + "\n");
+    }
+}
+global proc randomizerRotate()
+{
+    string $sel[] = `ls -sl`;
+    string $Object;
+    float $maxNumEnter = 359;
+    float $minNumEnter = 0;
+    float $numRandom = rand($maxNumEnter, $minNumEnter);
+    print $numRandom;
+    
+    for ($Object in $sel)
+        {
+       float $numRandom = rand($maxNumEnter, $minNumEnter);
+        setAttr ($Object + ".rotateX")$numRandom;
+        
+        float $numRandom = rand($maxNumEnter, $minNumEnter);
+        setAttr ($Object + ".rotateY")$numRandom;
+        
+        float $numRandom = rand($maxNumEnter, $minNumEnter);
+        setAttr ($Object + ".rotateZ")$numRandom;
+		
+        print ($Object + ": ");
+        print (getAttr($Object + ".rotateX") + ", " + getAttr($Object + ".rotateY") + ", " + getAttr($Object + ".rotateZ") + "." + "\n");
+    }
+}
 
 
-
-
+global proc RandomValues()
+    {
+		//Make a window with enterable min and max values, and buttons that run certain scripts with the random number
+        //Check if window with this name exists delete window if so
+        if (`window -exists MaxAndMinWin`) deleteUI -window MaxAndMinWin;
+        
+        window MaxAndMinWin;
+        columnLayout;
+        floatField MaximumField;
+        floatField MinimumField;
+        button -label "Randomize Translate All Axis'" -command "randomizer";
+        button -label "Randomize Translate X" -command "randomizerX";
+        button -label "Randomize Translate Y" -command "randomizerY";
+        button -label "Randomize Translate Z" -command "randomizerZ";
+		
+		button -label "Randomize Rotation" -command "randomizerRotate";
+        button -label "Randomize Scale" -command "randomizerScale";
+        showWindow MaxAndMinWin;
+        
+        float $maxNumEnter;
+        float $minNumEnter;
+} 
 
