@@ -169,11 +169,12 @@ cmds.polyExtrudeFacet('Punkin.f[0]',
                       'Punkin.f[322]',
                       ls=(.939465, .939465, .939465),
                       kft=True,
-                      ltz=-.15,)
+                      ltz=-.15, )
 
-cmds.select('Punkin.f[323]', 'Punkin.f[321]', 'Punkin.f[319]', 'Punkin.f[317]', 'Punkin.f[315]', 'Punkin.f[313]', 'Punkin.f[311]','Punkin.f[309]','Punkin.f[307]')
+cmds.select('Punkin.f[323]', 'Punkin.f[321]', 'Punkin.f[319]', 'Punkin.f[317]', 'Punkin.f[315]', 'Punkin.f[313]',
+            'Punkin.f[311]', 'Punkin.f[309]', 'Punkin.f[307]')
 
-cmds.move(0, 2.848, 0 )
+cmds.move(0, 2.848, 0)
 
 cmds.select('Punkin.vtx[277]',
             'Punkin.vtx[278]',
@@ -197,7 +198,7 @@ cmds.select('Punkin.vtx[277]',
 cmds.scale(.48041, 1, .48041, absolute=True)
 cmds.select('Punkin.vtx[0:631]')
 
-cmds.polyMergeVertex( d=0.15 )
+cmds.polyMergeVertex(d=0.15)
 
 cmds.select('Punkin.vtx[289]')
 cmds.softSelect(sse=1, ssd=4, sud=.5)
@@ -214,5 +215,8 @@ cmds.polyExtrudeFacet('Punkin.f[271]',
                       'Punkin.f[285]',
                       'Punkin.f[287]',
                       'Punkin.f[306:314]',
-                      kft = True,
+                      kft=True,
                       ltz=1.5)
+
+cmds.select('Punkin')
+cmds.polySoftEdge(a=100)

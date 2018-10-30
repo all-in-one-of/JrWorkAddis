@@ -160,12 +160,7 @@ global proc ControlCreation()
     string $CTwindow = `window -title "ControlCreator"
            -widthHeight 200 555`;    
         columnLayout;
-            string $FlowerShape = "Flower";
-            string $SquareShape = "Square";
-            string $CircleShape = "Circle";
-            string $DiamondShape = "Diamond";
-            int $colorer = 1;
-            
+                        
             scrollField -wordWrap true -width 150 -height 60 -text "Select the color for your new Controls." -editable false;
             button -label "Bright Green" -command ("$colorer = 14");
             button -label "Bright Red" -command ("$colorer = 13");
@@ -185,6 +180,11 @@ global proc ControlCreation()
     showWindow $CTwindow;
 
 }
+string $FlowerShape = "Flower";
+string $SquareShape = "Square";
+string $CircleShape = "Circle";
+string $DiamondShape = "Diamond";
+int $colorer = 1;
 
 
 global proc ParentGroup()
