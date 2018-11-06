@@ -1,152 +1,113 @@
 import maya.cmds as cmds
-
-#runs at bottom so everything can load first
-def randomizer():
-    #make the Selection an array
-    sel = cmds.ls(sl=True)
-    #the fields from the window entered as these.
-    maxNumEnter = cmds.floatField(MaximumField, q=True)
-    minNumEnter = cmds.floatField(MinimumField, q=True)
-
-    numRandom = rand(maxNumEnter, minNumEnter)
-    print numRandom
-    
-    for Object in sel:
-        numRandom = rand(maxNumEnter, minNumEnter)
-        cmds.setAttr (Object + '.translateX', numRandom)
-
-        numRandom = rand(maxNumEnter, minNumEnter)
-        cmds.setAttr(Object + '.translateY', numRandom)
-
-        numRandom = rand(maxNumEnter, minNumEnter)
-        cmds.setAttr(Object + '.translateZ', numRandom)
-
-        print (Object + ": ")
-        print (cmds.getAttr(Object + ".translateX") + ", " + getAttr(Object + ".translateY") + ", " + getAttr(Object + ".translateZ") + "." + "\n")
-
-
-def randomizerX()
-    sel = cmds.ls(sl=True)
-
-    maxNumEnter = cmds.floatField(MaximumField, q=True)
-    minNumEnter = cmds.floatField(MinimumField, q=True)
-            float $numRandom = rand($maxNumEnter, $minNumEnter);
-            print $numRandom;
-            
-            for ($Object in $sel)
-
-                float $numRandom = rand($maxNumEnter, $minNumEnter);
-                setAttr ($Object + ".translateX")$numRandom;
-        
-                print ($Object + ": ");
-                 print (getAttr($Object + ".translateX") + ", " + getAttr($Object + ".translateY") + ", " + getAttr($Object + ".translateZ") + "." + "\n");
-
-            
-
-        global proc randomizerY()
-
-            string $sel[] = `ls -sl`;
-            string $Object;
-            float $maxNumEnter = `floatField -q -v -ec  MaximumField`;
-            float $minNumEnter = `floatField -q -v -ec  MinimumField`;
-            float $numRandom = rand($maxNumEnter, $minNumEnter);
-            print $numRandom;
-            
-            for ($Object in $sel)
-
-                float $numRandom = rand($maxNumEnter, $minNumEnter);
-                setAttr ($Object + ".translateY")$numRandom;
-        
-                print ($Object + ": ");
-                 print (getAttr($Object + ".translateX") + ", " + getAttr($Object + ".translateY") + ", " + getAttr($Object + ".translateZ") + "." + "\n");
-
-            
-
-        global proc randomizerZ()
-
-            string $sel[] = `ls -sl`;
-            string $Object;
-            float $maxNumEnter = `floatField -q -v -ec  MaximumField`;
-            float $minNumEnter = `floatField -q -v -ec  MinimumField`;
-            float $numRandom = rand($maxNumEnter, $minNumEnter);
-            print $numRandom;
-            
-            for ($Object in $sel)
-
-                float $numRandom = rand($maxNumEnter, $minNumEnter);
-                setAttr ($Object + ".translateZ")$numRandom;
-        
-                print ($Object + ": ");
-                 print (getAttr($Object + ".translateX") + ", " + getAttr($Object + ".translateY") + ", " + getAttr($Object + ".translateZ") + "." + "\n");
-
-            
-
-
-global proc randomizerScale()
-
-    string $sel[] = `ls -sl`;
-    string $Object;
-    float $maxNumEnter = `floatField -q -v -ec  MaximumField`;
-    float $minNumEnter = `floatField -q -v -ec  MinimumField`;
-    float $numRandom = rand($maxNumEnter, $minNumEnter);
-    print $numRandom;
-    
-    for ($Object in $sel)
-
-        int $numRandom = rand($maxNumEnter, $minNumEnter);
-        setAttr ($Object + ".scaleX")$numRandom;       
-        setAttr ($Object + ".scaleY")$numRandom;
-        setAttr ($Object + ".scaleZ")$numRandom;
-        print ($Object + ": ");
-        print (getAttr($Object + ".scaleX") + ", " + getAttr($Object + ".scaleY") + ", " + getAttr($Object + ".scaleZ") + "." + "\n");
-
-
-global proc randomizerRotate()
-
-    string $sel[] = `ls -sl`;
-    string $Object;
-    float $maxNumEnter = 359;
-    float $minNumEnter = 0;
-    float $numRandom = rand($maxNumEnter, $minNumEnter);
-    print $numRandom;
-    
-    for ($Object in $sel)
-
-       float $numRandom = rand($maxNumEnter, $minNumEnter);
-        setAttr ($Object + ".rotateX")$numRandom;
-        
-        float $numRandom = rand($maxNumEnter, $minNumEnter);
-        setAttr ($Object + ".rotateY")$numRandom;
-        
-        float $numRandom = rand($maxNumEnter, $minNumEnter);
-        setAttr ($Object + ".rotateZ")$numRandom;
-		
-        print ($Object + ": ");
-        print (getAttr($Object + ".rotateX") + ", " + getAttr($Object + ".rotateY") + ", " + getAttr($Object + ".rotateZ") + "." + "\n");
-
-
-
+import random
 
 def RandomValues():
-    #Make a window with enterable min and max values, and buttons that run certain scripts with the random number
-    #Check if window with this name exists delete window if so
-    if (cmds.window(MaxAndMinWin, exists=True)): cmds.deleteUI(MaxAndMinWin)
-        
-    MaxAndMinWin =cmds.window()
+    # Make a window with enterable min and max values, and buttons that run certain scripts with the random number
+    # Check if window with this name exists delete window if so
+    if (cmds.window('MaxAndMinWin', exists=True)): cmds.deleteUI('MaxAndMinWin')
+
+    MaxAndMinWin = cmds.window('MaxAndMinWin')
     cmds.columnLayout()
-    cmds.floatField (MaximumField)
-    cmds.floatField (MinimumField)
-    cmds.button (label="Randomize Translate All Axis'", command=("randomizer"))
-    cmds.button(label="Randomize Translate X", command= ("randomizerX"))
-    cmds.button(label="Randomize Translate Y", command= ("randomizerY"))
-    cmds.button(label="Randomize Translate Z", command= ("randomizerZ"))
+    cmds.floatFieldGrp('MaximumField', label='Max')
+    cmds.floatFieldGrp('MinimumField', label='Min')
+    cmds.button(label="Randomize Translate All Axis'", command=lambda *args: randomizer())
+    cmds.button(label="Randomize Translate X", command=lambda *args: randomizerX())
+    cmds.button(label="Randomize Translate Y", command=lambda *args: randomizerY())
+    cmds.button(label="Randomize Translate Z", command=lambda *args: randomizerZ())
 
-    cmds.button(label="Randomize Rotation", command= ("randomizerRotate"))
-    cmds.button(label="Randomize Scale", command= ("randomizerScale"))
+    cmds.button(label="Randomize Rotation", command=lambda *args: randomizerRotate())
+    cmds.button(label="Reset Rotation", command=lambda *args: resetRotate())
+    cmds.intFieldGrp('ScaleNumber', label='Max Scale')
+    cmds.button(label="Randomize Scale", command=lambda *args: randomizerScale())
     cmds.showWindow(MaxAndMinWin)
+
+def randomizer():
+    # make the Selection an array
+    sel = cmds.ls(sl=True)
+    print sel
+    # the fields from the window entered as these.
+    maxNumEnter = cmds.floatFieldGrp('MaximumField', q=True, v=True)[0]
+    minNumEnter = cmds.floatFieldGrp('MinimumField', q=True, v=True)[0]
+
+    #numRandom = random.randrange(minNumEnter, maxNumEnter)
+    #print numRandom
+
+    for Object in sel:
+        numRandom = random.randrange(minNumEnter, maxNumEnter)
+        cmds.setAttr (Object + '.translateX', numRandom)
+
+        numRandom = random.randrange(minNumEnter, maxNumEnter)
+        cmds.setAttr(Object + '.translateY', numRandom)
+
+        numRandom = random.randrange(minNumEnter, maxNumEnter)
+        cmds.setAttr(Object + '.translateZ', numRandom)
+
+
+def randomizerX():
+    sel = cmds.ls(sl=True)
+    maxNumEnter = cmds.floatFieldGrp('MaximumField', q=True, v=True)[0]
+    minNumEnter = cmds.floatFieldGrp('MinimumField', q=True, v=True)[0]
+
+
+    for Object in sel:
+        numRandom = random.randrange(minNumEnter, maxNumEnter)
+        cmds.setAttr(Object + '.translateX', numRandom)
+
+
+def randomizerY():
+    sel = cmds.ls(sl=True)
+    maxNumEnter = cmds.floatFieldGrp('MaximumField', q=True, v=True)[0]
+    minNumEnter = cmds.floatFieldGrp('MinimumField', q=True, v=True)[0]
+
+    for Object in sel:
+        numRandom = random.randrange(minNumEnter, maxNumEnter)
+        cmds.setAttr(Object + '.translateY', numRandom)
+
+
+def randomizerZ():
+    sel = cmds.ls(sl=True)
+    maxNumEnter = cmds.floatFieldGrp('MaximumField', q=True, v=True)[0]
+    minNumEnter = cmds.floatFieldGrp('MinimumField', q=True, v=True)[0]
+
+    for Object in sel:
+        numRandom = random.randrange(minNumEnter, maxNumEnter)
+        cmds.setAttr(Object + '.translateZ', numRandom)
         
-    maxNumEnter
-    minNumEnter
 
 
+def randomizerScale():
+    sel = cmds.ls(sl=True)
+    maxNumEnter = cmds.intFieldGrp('ScaleNumber', q=True, v=True)[0]
+    minNumEnter = 1
+
+    for Object in sel:
+        numRandom = random.randrange(minNumEnter, maxNumEnter)
+        cmds.setAttr (Object + '.scaleX', numRandom)
+        cmds.setAttr (Object + '.scaleY', numRandom)
+        cmds.setAttr (Object + '.scaleZ', numRandom)
+
+def randomizerRotate():
+    sel = cmds.ls(sl=True)
+    maxNumEnter = 359
+    minNumEnter = 0
+
+    for Object in sel:
+        numRandom = random.randrange(minNumEnter, maxNumEnter)
+        cmds.setAttr(Object + '.rotateX', numRandom)
+
+        numRandom = random.randrange(minNumEnter, maxNumEnter)
+        cmds.setAttr(Object + '.rotateY', numRandom)
+
+        numRandom = random.randrange(minNumEnter, maxNumEnter)
+        cmds.setAttr(Object + '.rotateZ', numRandom)
+
+def resetRotate():
+    sel = cmds.ls(sl=True)
+
+    for Object in sel:
+        cmds.setAttr(Object + '.rotateX', 0)
+        cmds.setAttr(Object + '.rotateY', 0)
+        cmds.setAttr(Object + '.rotateZ', 0)
+
+		
 RandomValues()
