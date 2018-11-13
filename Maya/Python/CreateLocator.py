@@ -1,4 +1,20 @@
 import maya.cmds as cmds
+def windowMaker():
+    winMake = "LocatorWindow"
+    if cmds.window(winMake, exists=True): cmds.deleteUI(winMake)
+
+    winMake = cmds.window(winMake, title='Create Locator')
+    colLayout = cmds.columnLayout(parent=winMake, adjustableColumn=True)
+    # dropCol = cmds.optionMenuGrp(parent=colLayout, label="Type")
+    # cmds.menuItem(parent=dropCol, label="Bounding Box")
+    # cmds.menuItem(parent=dropCol, label="Pivot Point")
+    # cmds.button(parent=dropCol, label="Create Locator", command=lambda *args: CreateLoc())
+
+    cmds.textFieldGrp('NewName', label='Types of locators', parent=colLayout)
+    cmds.button(parent=colLayout, label="Create Locator At Pivot", command=lambda *args: CreateLoc(2))
+    cmds.button(parent=colLayout, label="Create Locator At Bounding box", command=lambda *args: CreateLoc(1))
+
+    cmds.showWindow(winMake)
 
 def CreateLoc(option=1):
     sels = cmds.ls(sl=True)
@@ -20,4 +36,4 @@ def CreateLoc(option=1):
             loca = cmds.spaceLocator()[0]
             cmds.xform(loca, t=Pivot, ws=True)
 
-CreateLoc()
+windowMaker()
