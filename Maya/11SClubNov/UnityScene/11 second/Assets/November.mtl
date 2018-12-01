@@ -1,0 +1,90 @@
+newmtl AddisonM_Tree2:lambert2SG
+illum 4
+Kd 0.13 0.09 0.03
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl AddisonM_Tree2:lambert3SG
+illum 4
+Kd 0.00 0.18 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl AddisonM_Tree3:pasted__lambert3SG
+illum 4
+Kd 0.00 0.18 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl body_SG
+illum 4
+Kd 0.82 0.62 0.44
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.06 0.06 0.06
+newmtl brow_SG
+illum 4
+Kd 0.14 0.11 0.10
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
+newmtl eye_SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 0.00
+newmtl initialShadingGroup
+illum 4
+Kd 0.39 0.31 0.17
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl jeep_skin:lambert3SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd lambert3SG_albedo.jpg
+Ni 1.00
+newmtl jeep_skin:lambert4SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd lambert4SG_albedo.jpg
+Ni 1.00
+newmtl jeep_skin:lambert5SG
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 0.31 0.31 0.31
+Ni 1.00
+newmtl jeep_skin:lambert6SG
+illum 4
+Kd 0.03 0.03 0.03
+Ka 0.00 0.00 0.00
+Tf 0.52 0.52 0.52
+Ni 1.00
+newmtl pupil_SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 0.00
+newmtl teeth_SG
+illum 4
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+newmtl tounge_SG
+illum 4
+Kd 0.71 0.34 0.34
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.50 0.50 0.50
