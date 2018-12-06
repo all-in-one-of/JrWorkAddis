@@ -5,57 +5,59 @@ class Controls():
         self.windowCreator = "Controls"
         self.ControlCreation
 
-        def ControlCreation(self):
-            self.delete()
+    def ControlCreation(self):
+        self.delete()
+        self.windowCreator = cmds.window(self.windowCreator, title='Renaming Window', widthHeight= (200,555))
 
-            self.windowCreator = cmds.window(self.windowCreator, title='Renaming Window', widthHeight= (200,555))
+        self.colLayout = cmds.columnLayout(parent=self.windowCreator, adjustableColumn=True)
+        FlowerShape = "Flower"
+        SquareShape = "Square"
+        CircleShape = "Circle"
+        DiamondShape = "Diamond"
+        colorer = 1
 
-            self.colLayout = cmds.columnLayout(parent=self.windowCreator, adjustableColumn=True)
-            FlowerShape = "Flower"
-            SquareShape = "Square"
-            CircleShape = "Circle"
-            DiamondShape = "Diamond"
-            colorer = 1
+        self.scrollin = cmds.scrollField(wordWrap=1,w=150, h=60,text="select the color for your new Controls", editable=0,)
+        cmds.button(parent=self.scrollin, label="Bright Green", command=lambda x: self.SetColor(14))
+        cmds.button(parent=self.scrollin, label="Bright Red", command=lambda x: self.SetColor(13))
+        cmds.button(parent=self.scrollin, label="Blue", command=lambda x: self.SetColor(6))
+        cmds.button(parent=self.scrollin, label="Bright Blue", command=lambda x: self.SetColor(18))
+        cmds.button(parent=self.scrollin, label="Pink", command=lambda x: self.SetColor(9))
 
-            self.scrollin = cmds.scrollField(wordWrap=1,w=150, h=60,text="select the color for your new Controls", editable=0,)
+        self.scrollin1 = cmds.scrollField(wordWrap=1,w=150, h=60,text="Now Select the type of control you want.", editable=0,)
+        cmds.button(parent=self.scrollin1, label="Create Flower Controls", command=lambda x: CreateCtrls(colorer, FlowerShape))
+        cmds.button(parent=self.scrollin1, label="Create Square Controls", command=lambda x: CreateCtrls(colorer, SquareShape))
+        cmds.button(parent=self.scrollin1, label="Create Circle Controls", command=lambda x: CreateCtrls(colorer, CircleShape))
+        cmds.button(parent=self.scrollin1, label="Create Diamond Controls", command=lambda x: CreateCtrls(colorer, DiamondShape))
 
-            cmds.button(parent=self.scrollin, label="Bright Green", command=lambda x: self.SetColor(14))
+        cmds.showWindow(self.windowCreator)
 
-            cmds.button() - label
-            "Bright Red" - command("$colorer = 13");
-            cmds.button() - label
-            "Blue" - command("$colorer = 6");
-            cmds.button() - label
-            "Bright Blue" - command("$colorer = 18");
-            cmds.button() - label
-            "Pink" - command("$colorer = 9");
-
-            scrollField - wordWrap
-            true - width
-            150 - height
-            60 - text
-            "Now Select the type of control you want." - editable
-            false;
-
-
-            cmds.button() - label
-            "Create Flower Controls" - command("CreateCtrls($colorer,$FlowerShape)");
-            cmds.button() - label
-            "Create Square Controls" - command("CreateCtrls($colorer,$SquareShape)");
-            cmds.button() - label
-            "Create Circle Controls" - command("CreateCtrls($colorer,$CircleShape)");
-            cmds.button() - label
-            "Create Diamond Controls" - command("CreateCtrls($colorer,$DiamondShape)");
-            cmds.button() - label
-            "Close" - command("deleteUI -window " + $window);
-            setParent..;
-            showWindow $window;
-        def SetColor(self,colour):
-            colorer = colour
+     def SetColor(self,colour):
+         colorer = colour
+         return colorer
 
 
     def delete(self):
         if (cmds.window('Control Creator', exists=True)): cmds.deleteUI('Control Creator')
+
+    def CreateCtrls(self,color,shapeName):
+
+        self.sels = cmds.ls(sl=True)
+
+        if (size(sels)>0):
+            for sel in sels:
+                self.ctrl = ControlTypes(shapeName)
+                self.renameCtrl = cmds.rename(self.ctrl (sel + "_Ctrl"))
+                self.groupies = cmds.group (renameCtrl, world=True, name=(renameCtrl + "_Grp"))
+                self.theColor = ColorControls(renameCtrl, color)
+                cmds.matchTransform (groupies,sel)
+
+
+        else():
+            cmds.warning("Nothing selected Creating control and group at orgin")
+           string $ctrl = ControlTypes($shapeName);
+           //create and name ctrl group
+           string $renameCtrl = `rename $ctrl "_Ctrl"`;
+           string $groupies = `group -world -name ($renameCtrl + "_Grp") $renameCtrl`;
 
     def controlWin (self, shape)
 
@@ -93,34 +95,7 @@ class Controls():
         return $ctrls[0];
 
 
-    def CreateCtrls(int $color, string $shapeName)
 
-        string $sels[] = `ls -sl`;
-        if (size($sels)>0)
-
-        for ($sel in $sels)
-
-            // create ctrl by calling control types
-            string $ctrl = ControlTypes($shapeName);
-
-            // rename
-            string $renameCtrl = `rename $ctrl ($sel + "_Ctrl")`;
-            //create and name ctrl group
-            string $groupies = `group -world -name ($renameCtrl + "_Grp") $renameCtrl`;
-
-            //grab name for use in changing the color
-            ColorControls($renameCtrl, $color);
-
-            matchTransform $groupies $sel;
-
-
-        else
-
-            warning("Nothing selected Creating control and group at orgin");
-           string $ctrl = ControlTypes($shapeName);
-           //create and name ctrl group
-           string $renameCtrl = `rename $ctrl "_Ctrl"`;
-           string $groupies = `group -world -name ($renameCtrl + "_Grp") $renameCtrl`;
 
 
 
