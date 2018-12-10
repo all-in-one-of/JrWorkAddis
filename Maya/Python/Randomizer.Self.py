@@ -10,6 +10,7 @@ class randoValuez():
         self.delete()
 
         self.MaxAndMinWin = cmds.window('MaxAndMinWin')
+
         self.colLayout = cmds.columnLayout()
         cmds.floatFieldGrp('MaximumField', label='Max', parent=self.colLayout)
         cmds.floatFieldGrp('MinimumField', label='Min', parent=self.colLayout)

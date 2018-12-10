@@ -7,8 +7,9 @@ class RenameUI():
 
     def winCreat(self):
         self.delete()
-        #get user parameters via window
+
         self.windowCreator = cmds.window(self.windowCreator, title='Renaming Window')
+
         self.colLayout = cmds.columnLayout(parent=self.windowCreator, adjustableColumn=True)
         cmds.text(label='Renamer', parent=self.colLayout)
         cmds.textFieldGrp('NewName', label='Enter new Name Here', parent=self.colLayout)
