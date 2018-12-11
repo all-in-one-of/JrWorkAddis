@@ -17,14 +17,6 @@ class ControlsSir:
         DiamondShape = "Diamond"
         colorer = 1
 
-        self.scrollin = cmds.scrollField(parent=self.colLayout, wordWrap=1, w=150, h=60,
-                                         text="select the color for your new Controls", editable=0)
-        cmds.button(parent=self.colLayout, label="Bright Green", command=lambda x: self.SetColor(14))
-        cmds.button(parent=self.colLayout, label="Bright Red", command=lambda x: self.SetColor(13))
-        cmds.button(parent=self.colLayout, label="Blue", command=lambda x: self.SetColor(6))
-        cmds.button(parent=self.colLayout, label="Bright Blue", command=lambda x: self.SetColor(18))
-        cmds.button(parent=self.colLayout, label="Pink", command=lambda x: self.SetColor(9))
-
         self.scrollin1 = cmds.scrollField(wordWrap=1, w=150, h=60, text="Now Select the type of control you want.",
                                           editable=0)
         cmds.button(parent=self.colLayout, label="Create Square Controls",
@@ -34,11 +26,15 @@ class ControlsSir:
         cmds.button(parent=self.colLayout, label="Create Diamond Controls",
                     command=lambda x: self.createControls(colorer, DiamondShape))
 
+        self.scrollin = cmds.scrollField(parent=self.colLayout, wordWrap=1, w=150, h=60,
+                                         text="select the color for your new Controls", editable=0)
+        cmds.button(parent=self.colLayout, label="Bright Green", command=lambda x: self.SetColor(14))
+        cmds.button(parent=self.colLayout, label="Bright Red", command=lambda x: self.SetColor(13))
+        cmds.button(parent=self.colLayout, label="Blue", command=lambda x: self.SetColor(6))
+        cmds.button(parent=self.colLayout, label="Bright Blue", command=lambda x: self.SetColor(18))
+        cmds.button(parent=self.colLayout, label="Pink", command=lambda x: self.SetColor(9))
         cmds.showWindow(self.windowCreator)
 
-    def SetColor(self, colour):
-         colorer = colour
-         return colorer
 
     def delete(self):
         if cmds.window('ControlsWindow', exists=True): cmds.deleteUI('ControlsWindow')
@@ -54,7 +50,6 @@ class ControlsSir:
                 self.renamed = cmds.rename(sel + "_Ctrl")
                 self.groupies = cmds.group(self.renamed, world=True, name=(self.renamed + "_Grp"))
                 cmds.matchTransform(self.groupies, sel)
-                self.ColorControls(self.renamed, color)
 
         else:
             cmds.warning("Nothing selected Creating control and group at origin")
@@ -62,7 +57,6 @@ class ControlsSir:
             cmds.select(self.ctrls, r=True)
             self.renamed = cmds.rename("Basic_Ctrl")
             self.groupies = cmds.group(self.renamed, world=True, name=(self.renamed + "_Grp"))
-            self.ColorControls(self.renamed, color)
 
     def ControlTypes (self, shape):
 
@@ -81,9 +75,9 @@ class ControlsSir:
 
         return self.ctrls[0]
 
-    def ColorControls(self, ctrl, color):
+    def SetColor(self, color):
 
-        self.shapes = cmds.listRelatives(ctrl)
+        self.shapes = cmds.listRelatives()
         print self.shapes
 
         for shape in self.shapes:
