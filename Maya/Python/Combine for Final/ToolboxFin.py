@@ -47,7 +47,8 @@ class Toolbox():
         Randomize.RandomValues()
 
     def ConstraintWind(self):
-        print "in Development"
-        cmds.warning("in Development")
+        import ParentScale
+        ParentNScale = ParentScale.PSWindow()
+        ParentNScale.Create()
 
 Toolbox()
