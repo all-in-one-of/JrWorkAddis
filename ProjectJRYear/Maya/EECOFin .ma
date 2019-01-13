@@ -1,6 +1,6 @@
 //Maya ASCII 2018ff09 scene
 //Name: EECOFin .ma
-//Last modified: Sat, Jan 12, 2019 10:36:07 PM
+//Last modified: Sat, Jan 12, 2019 10:39:52 PM
 //Codeset: 1252
 requires maya "2018ff09";
 requires "mtoa" "3.0.1.1";
@@ -14,8 +14,8 @@ fileInfo "license" "student";
 createNode transform -s -n "persp";
 	rename -uid "71972395-4D45-3F50-BA37-B6B57235AF1E";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" -2.0579383035633771 2.651841056047413 28.499880821008148 ;
-	setAttr ".r" -type "double3" 6.2947336133529834 715.79999999993413 4.9829986461418713e-17 ;
+	setAttr ".t" -type "double3" -4.8761180151723504 7.8151426608419925 28.262211960316058 ;
+	setAttr ".r" -type "double3" -3.9052663866472486 710.19999999990375 0 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "55B35327-4B26-99DB-137A-CB82E0EC97D6";
 	setAttr -k off ".v" no;
