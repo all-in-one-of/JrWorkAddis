@@ -5,12 +5,18 @@ ModelImporter:
   fileIDToRecycleName:
     100000: //RootNode
     100002: Tree_10541409_subnet11_3
+    100004: Tree_10541409_subnet11_0
     400000: //RootNode
     400002: Tree_10541409_subnet11_3
+    400004: Tree_10541409_subnet11_0
     2100000: Tree_10541409_subnet11_3Mat
+    2100002: Tree_10541409_subnet11_0Mat
     2300000: Tree_10541409_subnet11_3
+    2300002: Tree_10541409_subnet11_0
     3300000: Tree_10541409_subnet11_3
+    3300002: Tree_10541409_subnet11_0
     4300000: Tree_10541409_subnet11_3
+    4300002: Tree_10541409_subnet11_0
   externalObjects: {}
   materials:
     importMaterials: 1
