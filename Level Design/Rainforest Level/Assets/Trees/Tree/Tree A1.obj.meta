@@ -29,7 +29,17 @@ ModelImporter:
     4300002: Trunk1_Tree_10541409_subnet11_0
     4300004: Leaves_1_Tree_10541409_subnet11_0
     4300006: Tree_10541409_subnet11_0_Trunk1
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Leaves_1_Tree_10541409_subnet11_0Mat
+    second: {fileID: 2100000, guid: 5e7bc6969f36d884da6f4da423f9ff6f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tree_10541409_subnet11_0_Trunk1Mat
+    second: {fileID: 2100000, guid: b605101ba26df834f8365571465e8d14, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

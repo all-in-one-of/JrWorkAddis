@@ -17,7 +17,17 @@ ModelImporter:
     3300002: Tree_C_Trunk
     4300000: Leaves_Tree_C
     4300002: Tree_C_Trunk
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Leaves_Tree_CMat
+    second: {fileID: 2100000, guid: 5e7bc6969f36d884da6f4da423f9ff6f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tree_C_TrunkMat
+    second: {fileID: 2100000, guid: 4a64674a10c2bd341ac7321d8c44e0c5, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
