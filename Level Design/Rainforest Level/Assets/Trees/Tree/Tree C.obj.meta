@@ -6,17 +6,30 @@ ModelImporter:
     100000: Leaves_Tree_C
     100002: //RootNode
     100004: Tree_C_Trunk
+    100006: TreeCC_LeavesCC
+    100008: TrunkCC_TreeCC
     400000: Leaves_Tree_C
     400002: //RootNode
     400004: Tree_C_Trunk
+    400006: TreeCC_LeavesCC
+    400008: TrunkCC_TreeCC
     2100000: Leaves_Tree_CMat
     2100002: Tree_C_TrunkMat
+    2100004: TreeCC_LeavesCCMat
+    2100006: TrunkCC_TreeCCMat
     2300000: Leaves_Tree_C
     2300002: Tree_C_Trunk
+    2300004: TreeCC_LeavesCC
+    2300006: TrunkCC_TreeCC
     3300000: Leaves_Tree_C
     3300002: Tree_C_Trunk
+    3300004: TreeCC_LeavesCC
+    3300006: TrunkCC_TreeCC
     4300000: Leaves_Tree_C
     4300002: Tree_C_Trunk
+    4300004: TreeCC_LeavesCC
+    4300006: TrunkCC_TreeCC
+    2186277476908879412: ImportLogs
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -26,8 +39,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: TreeCC_LeavesCCMat
+    second: {fileID: 2100000, guid: 20303b01b2826274391b347e098e0ec3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Tree_C_TrunkMat
     second: {fileID: 2100000, guid: 4a64674a10c2bd341ac7321d8c44e0c5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TrunkCC_TreeCCMat
+    second: {fileID: 2100000, guid: 74c28706c6a9ea64ca097827bbd8ef79, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

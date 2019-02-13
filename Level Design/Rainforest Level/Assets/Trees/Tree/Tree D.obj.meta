@@ -6,23 +6,46 @@ ModelImporter:
     100000: polySurface937_TreeD
     100002: //RootNode
     100004: TreeD_polySurface1
+    100006: TreeDD_LeavesDD
+    100008: TrunkDD_TreeDD
     400000: polySurface937_TreeD
     400002: //RootNode
     400004: TreeD_polySurface1
+    400006: TreeDD_LeavesDD
+    400008: TrunkDD_TreeDD
     2100000: polySurface937_TreeDMat
     2100002: TreeD_polySurface1Mat
+    2100004: TreeDD_LeavesDDMat
+    2100006: TrunkDD_TreeDDMat
     2300000: polySurface937_TreeD
     2300002: TreeD_polySurface1
+    2300004: TreeDD_LeavesDD
+    2300006: TrunkDD_TreeDD
     3300000: polySurface937_TreeD
     3300002: TreeD_polySurface1
+    3300004: TreeDD_LeavesDD
+    3300006: TrunkDD_TreeDD
     4300000: polySurface937_TreeD
     4300002: TreeD_polySurface1
+    4300004: TreeDD_LeavesDD
+    4300006: TrunkDD_TreeDD
+    2186277476908879412: ImportLogs
   externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TreeDD_LeavesDDMat
+    second: {fileID: 2100000, guid: 20303b01b2826274391b347e098e0ec3, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: TreeD_polySurface1Mat
     second: {fileID: 2100000, guid: 1be9e1c557ce4c740aba3c08b62b4cb3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TrunkDD_TreeDDMat
+    second: {fileID: 2100000, guid: 5a4a9f0bf13c17740bfb6f36597b89a6, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
